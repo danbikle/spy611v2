@@ -1,0 +1,21 @@
+<html>
+<pre>
+The files in this folder should contain syntax I want to reuse among pages.
+For example, the links at the top of the page should be reusable code.
+So, the syntax for thos links should be in this folder.
+Syntax for a specific page should be in another folder.
+
+For example, the syntax for the contact page is here:
+~/spy611v2/app/views/posts/contact.erb
+
+Rails allows me to combine the reusable syntax with the specific syntax.
+
+Look at posts.erb in this folder for an example of how to do that.
+
+In posts.erb you will find a line which looks like this:
+
+    <%= yield %>
+
+The above line tells Rails where I want the specific syntax brought inside the reusable syntax.
+</pre>
+</html>
