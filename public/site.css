@@ -1,2 +1,6 @@
 
-.navbar-dark .navbar-nav .nav-link {color: white;}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    padding-top:    9px;
+    padding-bottom: 5px;
+}
