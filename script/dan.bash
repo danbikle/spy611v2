@@ -29,7 +29,7 @@ cd ${HOME}/spy611v2/script/
 
 env|sort
 
-./$@
+$@
 
 exit
 
