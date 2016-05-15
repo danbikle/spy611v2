@@ -7,10 +7,15 @@
 # Demo:
 # ${HOME}/spy611v2/script/dan.bash ./night.bash
 
+export     SPY611=${HOME}/spy611v2
+mkdir -p ${SPY611}/public/csv/
+cd       ${SPY611}/public/csv/
+
 # I should get prices
-./wgetGSPCnight.bash
+${SPY611}/script/wgetGSPCnight.bash
 
 # I should generate features from prices:
+${HOME}/anaconda3/bin/python ${SPY611}/script/genf.py GSPC2.csv
 
 # I should generate training data from features.
 

@@ -25,7 +25,8 @@ if [ -e ${HOME}/anaconda3/bin ]; then
   export PATH="${HOME}/anaconda3/bin:$PATH"
 fi
 
-cd ${HOME}/spy611v2/script/
+export SPY611=${HOME}/spy611v2
+cd   ${SPY611}/script/
 
 env|sort
 
