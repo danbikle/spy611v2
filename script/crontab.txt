@@ -6,6 +6,6 @@
 50 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon1_bash.txt 2>&1
 10 20 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon2_bash.txt 2>&1
 59 03 * * tue,wed,thu,fri,sat ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
-24 22 15 5 *                  ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
+43 22 15 5 *                  ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
 # end
 
