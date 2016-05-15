@@ -17,9 +17,16 @@ ${SPY611}/script/wgetGSPCnight.bash
 # I should generate features from prices:
 ${HOME}/anaconda3/bin/python ${SPY611}/script/genf.py GSPC2.csv
 
-# I should generate training data from features.
+# I should generate training and test data from features.
 
-# I should generate test     data from features.
+# Next I generate training data CSV files:
+rm -rf   /tmp/ddata/
+mkdir -p /tmp/ddata/
+cd       /tmp/ddata/
+cp ${SPY611}/public/csv/ftrGSPC2.csv /tmp/ddata/
+STARTYR=2013
+ENDYR=2016
+${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 
 # I should learn then test
 
