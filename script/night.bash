@@ -29,6 +29,8 @@ ENDYR=2016
 ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 
 # I should learn then test
+${HOME}/anaconda3/bin/python ${SPY611}/script/train_test.py $STARTYR $ENDYR
+# Now I should have CSV files with predictions mixed with actual results.
 
 # I should visualize the predictions:
 
