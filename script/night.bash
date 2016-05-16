@@ -34,6 +34,8 @@ ${HOME}/anaconda3/bin/python ${SPY611}/script/train_test.py $STARTYR $ENDYR
 
 # I should report accuracy and effectiveness from CSV files in /tmp/ddata/
 ${HOME}/anaconda3/bin/python ${SPY611}/script/acc_eff.py $STARTYR $ENDYR
+mkdir -p                       ${SPY611}/public/acc_eff/
+cp -p /tmp/ddata/acc_eff*.html ${SPY611}/public/acc_eff/
 
 # I should visualize the predictions:
 

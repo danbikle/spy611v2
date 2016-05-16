@@ -35,12 +35,12 @@ for yr in range(startyr,1+finalyr):
   tn_i = len(tn_df)
   fp_i = len(fp_df)
   fn_i = len(fn_df)
-  print('For '+str(yr)+':')
-  print('Naive-Bayes: Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
-  print('Naive-Bayes: Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
-  print('Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
-  print('Naive-Bayes: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
-  print('Naive-Bayes: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
+  rpt_s = '<code>For '+str(yr)+':'+'\n'
+  rpt_s += 'Naive-Bayes: Positive, Up,   Prediction Count is '+str(tp_i+fp_i)+'\n'
+  rpt_s += 'Naive-Bayes: Negative, Down, Prediciton Count is '+str(tn_i+fn_i)+'\n'
+  rpt_s += 'Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%\n'
+  rpt_s += 'Naive-Bayes: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%\n'
+  rpt_s += 'Naive-Bayes: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%\n'
   # I should compute effectiveness
   pred_up_pred   = (pred_df['pdir_nb'] ==  1)
   pred_down_pred = (pred_df['pdir_nb'] == -1)
@@ -48,9 +48,9 @@ for yr in range(startyr,1+finalyr):
   pred_down_df   = pred_df[pred_down_pred]
   eff_up         = np.mean(pred_up_df['pctlead'])
   eff_down       = np.mean(pred_down_df['pctlead'])
-  print('Naive-Bayes: Positive, Up,   effectiveness is '+str(eff_up)+'%')
-  print('Naive-Bayes: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%')
-  print('Naive-Bayes: Negative, Down, effectiveness is '+str(eff_down)+'%')
+  rpt_s += 'Naive-Bayes: Positive, Up,   effectiveness is '+str(eff_up)+'%\n'
+  rpt_s += 'Naive-Bayes: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%\n'
+  rpt_s += 'Naive-Bayes: Negative, Down, effectiveness is '+str(eff_down)+'%\n'
   # I should count
   tp_pred = (pred_df['accuracy_lr'] == 'tp')
   tn_pred = (pred_df['accuracy_lr'] == 'tn')
@@ -64,12 +64,12 @@ for yr in range(startyr,1+finalyr):
   tn_i = len(tn_df)
   fp_i = len(fp_df)
   fn_i = len(fn_df)
-  print('For '+str(yr)+':')
-  print('Logistic-Regression: Positive, Up,   Prediction Count is '+str(tp_i+fp_i))
-  print('Logistic-Regression: Negative, Down, Prediciton Count is '+str(tn_i+fn_i))
-  print('Logistic-Regression: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%')
-  print('Logistic-Regression: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%')
-  print('Logistic-Regression: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%')
+  rpt_s += 'For '+str(yr)+':\n'
+  rpt_s += 'Logistic-Regression: Positive, Up,   Prediction Count is '+str(tp_i+fp_i)+'\n'
+  rpt_s += 'Logistic-Regression: Negative, Down, Prediciton Count is '+str(tn_i+fn_i)+'\n'
+  rpt_s += 'Logistic-Regression: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%\n'
+  rpt_s += 'Logistic-Regression: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%\n'
+  rpt_s += 'Logistic-Regression: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%\n'
   # I should compute effectiveness
   pred_up_pred   = (pred_df['pdir_lr'] ==  1)
   pred_down_pred = (pred_df['pdir_lr'] == -1)
@@ -77,9 +77,11 @@ for yr in range(startyr,1+finalyr):
   pred_down_df   = pred_df[pred_down_pred]
   eff_up         = np.mean(pred_up_df['pctlead'])
   eff_down       = np.mean(pred_down_df['pctlead'])
-  print('Logistic-Regression: Positive, Up,   effectiveness is '+str(eff_up)+'%')
-  print('Logistic-Regression: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%')
-  print('Logistic-Regression: Negative, Down, effectiveness is '+str(eff_down)+'%')
-
-
-
+  rpt_s += 'Logistic-Regression: Positive, Up,   effectiveness is '+str(eff_up)+'%\n'
+  rpt_s += 'Logistic-Regression: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%\n'
+  rpt_s += 'Logistic-Regression: Negative, Down, effectiveness is '+str(eff_down)+'%\n'
+  rpt_s += '</code>\n'
+  myf_s = 'acc_eff'+str(yr)+'.html'
+  with open(myf_s, 'w') as myf:
+    myf.write(rpt_s)
+'bye'
