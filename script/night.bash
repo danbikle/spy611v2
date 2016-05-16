@@ -32,6 +32,9 @@ ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $
 ${HOME}/anaconda3/bin/python ${SPY611}/script/train_test.py $STARTYR $ENDYR
 # Now I should have CSV files with predictions mixed with actual results.
 
+# I should report accuracy and effectiveness from CSV files in /tmp/ddata/
+${HOME}/anaconda3/bin/python ${SPY611}/script/acc_eff.py $STARTYR $ENDYR
+
 # I should visualize the predictions:
 
 exit
