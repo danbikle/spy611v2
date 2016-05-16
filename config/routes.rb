@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get  'backtests/:yr', to: 'backtests#index'
+  get  'btests/:yr', to: 'btests#index'
   get  'posts/index'
   root 'posts#index'
   get  ':controller(/:action)'
@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   get 'about'     => 'posts#about'
   get 'blog'      => 'posts#blog'
   get 'contact'   => 'posts#contact'
-  get 'backtests' => 'backtests#index'
+  get 'backtests' => 'posts#backtests'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

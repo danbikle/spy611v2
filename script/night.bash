@@ -24,7 +24,7 @@ rm -rf   /tmp/ddata/
 mkdir -p /tmp/ddata/
 cd       /tmp/ddata/
 cp ${SPY611}/public/csv/ftrGSPC2.csv /tmp/ddata/
-STARTYR=2013
+STARTYR=2010
 ENDYR=2016
 ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 
@@ -33,9 +33,9 @@ ${HOME}/anaconda3/bin/python ${SPY611}/script/train_test.py $STARTYR $ENDYR
 # Now I should have CSV files with predictions mixed with actual results.
 
 # I should report accuracy and effectiveness from CSV files in /tmp/ddata/
-${HOME}/anaconda3/bin/python ${SPY611}/script/acc_eff.py $STARTYR $ENDYR
+${HOME}/anaconda3/bin/python   ${SPY611}/script/acc_eff.py $STARTYR $ENDYR
 mkdir -p                       ${SPY611}/public/acc_eff/
-cp -p /tmp/ddata/acc_eff*.html ${SPY611}/public/acc_eff/
+cp -p /tmp/ddata/_acc_eff*.erb ${SPY611}/public/acc_eff/
 
 # I should visualize the predictions:
 

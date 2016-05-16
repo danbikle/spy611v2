@@ -35,7 +35,7 @@ for yr in range(startyr,1+finalyr):
   tn_i = len(tn_df)
   fp_i = len(fp_df)
   fn_i = len(fn_df)
-  rpt_s = '<code>For '+str(yr)+':'+'\n'
+  rpt_s = 'For '+str(yr)+':'+'\n'
   rpt_s += 'Naive-Bayes: Positive, Up,   Prediction Count is '+str(tp_i+fp_i)+'\n'
   rpt_s += 'Naive-Bayes: Negative, Down, Prediciton Count is '+str(tn_i+fn_i)+'\n'
   rpt_s += 'Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%\n'
@@ -80,8 +80,7 @@ for yr in range(startyr,1+finalyr):
   rpt_s += 'Logistic-Regression: Positive, Up,   effectiveness is '+str(eff_up)+'%\n'
   rpt_s += 'Logistic-Regression: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%\n'
   rpt_s += 'Logistic-Regression: Negative, Down, effectiveness is '+str(eff_down)+'%\n'
-  rpt_s += '</code>\n'
-  myf_s = 'acc_eff'+str(yr)+'.html'
+  myf_s = '_acc_eff'+str(yr)+'.erb'
   with open(myf_s, 'w') as myf:
     myf.write(rpt_s)
 'bye'

@@ -12,3 +12,18 @@ body p{
     color: #003300;
     font-weight: bold;
 }
+
+
+body a.body_a{
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #0275d8;
+    font-weight: bold;
+}
+
+
+body a.body_a:hover {
+  background-color: #EEEEEE;
+  color: #BB0000; }
+
