@@ -38,5 +38,5 @@ mkdir -p                       ${SPY611}/public/acc_eff/
 cp -p /tmp/ddata/_acc_eff*.erb ${SPY611}/public/acc_eff/
 
 # I should visualize the predictions:
-echo ${HOME}/anaconda3/bin/python ${SPY611}/script/rgb.py 2010 2016
+${HOME}/anaconda3/bin/python ${SPY611}/script/rgb.py 2010 2016
 exit
