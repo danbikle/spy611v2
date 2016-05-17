@@ -24,7 +24,7 @@ rm -rf   /tmp/ddata/
 mkdir -p /tmp/ddata/
 cd       /tmp/ddata/
 cp ${SPY611}/public/csv/ftrGSPC2.csv /tmp/ddata/
-STARTYR=2010
+STARTYR=1981
 ENDYR=2016
 ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 
@@ -38,5 +38,5 @@ mkdir -p                       ${SPY611}/public/acc_eff/
 cp -p /tmp/ddata/_acc_eff*.erb ${SPY611}/public/acc_eff/
 
 # I should visualize the predictions:
-${HOME}/anaconda3/bin/python ${SPY611}/script/rgb.py 2010 2016
+${HOME}/anaconda3/bin/python ${SPY611}/script/rgb.py $STARTYR $ENDYR
 exit
