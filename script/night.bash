@@ -39,4 +39,6 @@ cp -p /tmp/ddata/_acc_eff*.erb ${SPY611}/public/acc_eff/
 
 # I should visualize the predictions:
 ${HOME}/anaconda3/bin/python ${SPY611}/script/rgb.py $STARTYR $ENDYR
+cp /tmp/ddata/plot*.png ${SPY611}/public/img/
+
 exit
