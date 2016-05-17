@@ -12,7 +12,7 @@ mkdir -p ${SPY611}/public/csv/
 cd       ${SPY611}/public/csv/
 
 # I should get prices
-echo ${SPY611}/script/wgetGSPC.bash
+${SPY611}/script/wgetGSPC.bash
 
 # I should generate features from prices:
 ${HOME}/anaconda3/bin/python ${SPY611}/script/genf.py GSPC2.csv
