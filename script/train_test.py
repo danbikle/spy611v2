@@ -56,6 +56,7 @@ for yr in range(startyr,1+finalyr):
   x_test_a = test_a[:,pctlag1_i:end_i]
   y_test_a = test_a[:,pctlead_i]
   label_test_a  = y_test_a > train_median
+  prob_lr_l        = []
   predictions_lr_l = []
   x_eff_lr_l       = [0.0]
   recent_eff_lr_l  = [0.0]
@@ -71,6 +72,7 @@ for yr in range(startyr,1+finalyr):
     xr_a           = xf_a.reshape(1, -1)
     aprediction_lr = clf_lr.predict_proba(xr_a)[0,1]
     aprediction_nb = clf_nb.predict(xr_a)[0]
+    prob_lr_l.append(aprediction_lr)
     if (aprediction_lr > 0.5):
       predictions_lr_l.append(1)  # up   prediction
     else:
@@ -114,6 +116,7 @@ for yr in range(startyr,1+finalyr):
   # I should save predictions, eff, acc, so I can report later.
   test_df['actual_dir']    = np.sign(test_df['pctlead'])
   #
+  test_df['prob_lr']       = prob_lr_l
   test_df['pdir_lr']       = predictions_lr_l
   test_df['x_eff_lr']      = x_eff_lr_l[1:]
   test_df['recent_eff_lr'] = recent_eff_lr_l[1:]
