@@ -1,7 +1,8 @@
 %h1 Backtest #{params[:yr]}
+%img(src="/img/plot#{params[:yr]}.png")
+
 %pre
-  %code
+  %code.rpt
     =render "acc_eff#{params[:yr]}"
 %hr/
-%img(src="/img/plot2015.png")
-%br/
+
