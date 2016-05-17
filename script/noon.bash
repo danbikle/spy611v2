@@ -24,7 +24,7 @@ rm -rf   /tmp/ddata/
 mkdir -p /tmp/ddata/
 cd       /tmp/ddata/
 cp ${SPY611}/public/csv/ftrGSPC2.csv /tmp/ddata/
-STARTYR=2015
+STARTYR=2016
 ENDYR=2016
 ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 
