@@ -23,10 +23,10 @@ for yr in range(startyr,1+finalyr):
   predf   = 'predictions'+str(yr)+'.csv'
   pred_df = pd.read_csv(predf)
   # I should count
-  tp_pred = (pred_df['accuracy_nb'] == 'tp')
-  tn_pred = (pred_df['accuracy_nb'] == 'tn')
-  fp_pred = (pred_df['accuracy_nb'] == 'fp')
-  fn_pred = (pred_df['accuracy_nb'] == 'fn')
+  tp_pred = (pred_df['accuracy_nb'] == 'True Positive')
+  tn_pred = (pred_df['accuracy_nb'] == 'True Negative')
+  fp_pred = (pred_df['accuracy_nb'] == 'False Positive')
+  fn_pred = (pred_df['accuracy_nb'] == 'False Negative')
   tp_df   =  pred_df[tp_pred]
   tn_df   =  pred_df[tn_pred]
   fp_df   =  pred_df[fp_pred]
@@ -51,11 +51,12 @@ for yr in range(startyr,1+finalyr):
   rpt_s += 'Naive-Bayes: Positive, Up,   effectiveness is '+str(eff_up)+'%\n'
   rpt_s += 'Naive-Bayes: Long-only effectiveness is '+str(np.mean(pred_df['pctlead']))+'%\n'
   rpt_s += 'Naive-Bayes: Negative, Down, effectiveness is '+str(eff_down)+'%\n'
+  # I should report logistic regression (lr) now:
   # I should count
-  tp_pred = (pred_df['accuracy_lr'] == 'tp')
-  tn_pred = (pred_df['accuracy_lr'] == 'tn')
-  fp_pred = (pred_df['accuracy_lr'] == 'fp')
-  fn_pred = (pred_df['accuracy_lr'] == 'fn')
+  tp_pred = (pred_df['accuracy_lr'] == 'True Positive')
+  tn_pred = (pred_df['accuracy_lr'] == 'True Negative')
+  fp_pred = (pred_df['accuracy_lr'] == 'False Positive')
+  fn_pred = (pred_df['accuracy_lr'] == 'False Negative')
   tp_df   =  pred_df[tp_pred]
   tn_df   =  pred_df[tn_pred]
   fp_df   =  pred_df[fp_pred]

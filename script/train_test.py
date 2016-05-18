@@ -95,22 +95,22 @@ for yr in range(startyr,1+finalyr):
     # I should save accuracy of each prediction
     #
     if ((pctlead > 0) and (aprediction_lr > 0.5)):
-      acc_lr_l.append('tp')
+      acc_lr_l.append('True Positive')
     elif ((pctlead > 0) and (aprediction_lr < 0.5)):
-      acc_lr_l.append('fn')
+      acc_lr_l.append('False Negative')
     elif ((pctlead < 0) and (aprediction_lr > 0.5)):
-      acc_lr_l.append('fp')
+      acc_lr_l.append('False Positive')
     else:
-      acc_lr_l.append('tn')
+      acc_lr_l.append('True Negative')
     #
     if ((pctlead > 0) and (aprediction_nb == True)):
-      acc_nb_l.append('tp')
+      acc_nb_l.append('True Positive')
     elif ((pctlead > 0) and (aprediction_nb == False)):
-      acc_nb_l.append('fn')
+      acc_nb_l.append('False Negative')
     elif ((pctlead < 0) and (aprediction_nb == True)):
-      acc_nb_l.append('fp')
+      acc_nb_l.append('False Positive')
     else:
-      acc_nb_l.append('tn')
+      acc_nb_l.append('True Negative')
     #
     'end for'
   # I should save predictions, eff, acc, so I can report later.
@@ -149,9 +149,20 @@ for x_f in test_df['actual_dir']:
     actual_dir_l.append('Positive')
   else:
     actual_dir_l.append('Negative')
-prob_lr_l     = [str(x_f) for x_f in test_df['prob_lr']]
-pdir_lr_l     = [str(x_f) for x_f in test_df['pdir_lr']]
-pdir_nb_l     = [str(x_f) for x_f in test_df['pdir_nb']]
+prob_lr_l     = [str(x_f)[:6] for x_f in test_df['prob_lr']]
+pdir_lr_l     = []
+for x_f in test_df['pdir_lr']:
+  if x_f > 0:
+    pdir_lr_l.append('Positive')
+  else:
+    pdir_lr_l.append('Negative')
+pdir_nb_l     = []
+for x_f in test_df['pdir_nb']:
+  if x_f > 0:
+    pdir_nb_l.append('Positive')
+  else:
+    pdir_nb_l.append('Negative')
+
 accuracy_lr_l = [x_s      for x_s in test_df['accuracy_lr']]
 accuracy_nb_l = [x_s      for x_s in test_df['accuracy_nb']]
 x_eff_lr_l    = [str(x_f) for x_f in test_df['x_eff_lr']]
@@ -177,7 +188,6 @@ rpt_df = pd.DataFrame({
 ,'x_eff_lr':     x_eff_lr_l     
 ,'x_eff_nb':     x_eff_nb_l     
 })
-pdb.set_trace()
 
 rpt2_df = rpt_df[['cdate'
 ,'cp'
