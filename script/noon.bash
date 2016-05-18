@@ -32,4 +32,7 @@ ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $
 ${HOME}/anaconda3/bin/python ${SPY611}/script/train_test.py $STARTYR $ENDYR
 # Now I should have CSV files with predictions mixed with actual results.
 
+# I should now have an erb file in /tmp/ddata/
+cp /tmp/ddata/_predictions.erb ${SPY611}/public/
+
 exit

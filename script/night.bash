@@ -41,4 +41,7 @@ cp -p /tmp/ddata/_acc_eff*.erb ${SPY611}/public/acc_eff/
 ${HOME}/anaconda3/bin/python ${SPY611}/script/rgb.py $STARTYR $ENDYR
 cp /tmp/ddata/plot*.png ${SPY611}/public/img/
 
+# I should now have an erb file in /tmp/ddata/
+cp /tmp/ddata/_predictions.erb ${SPY611}/public/
+
 exit
