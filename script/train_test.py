@@ -135,15 +135,59 @@ for yr in range(startyr,1+finalyr):
   #
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
-  # I should create a 2nd DF for reporting.
-  rpt_df = test_df[['cdate','cp','pctlag1','pctlead','actual_dir','prob_lr','pdir_lr','pdir_nb','accuracy_lr','accuracy_nb','x_eff_lr','x_eff_nb']]
-  rpt_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
-  rpt_html_s = rpt_df.to_html(index=False)
-  # myf_s = '_predictions'+str(yr)+'.erb'
-  # Currently I should want only the last one:
-  myf_s = '_predictions.erb'
-  with open(myf_s, 'w') as myf:
-    myf.write(rpt_html_s)
+# I should create a 2nd DF for reporting.
+# rpt_df = test_df[['cdate','cp','pctlag1','pctlead','actual_dir','prob_lr','pdir_lr','pdir_nb','accuracy_lr','accuracy_nb','x_eff_lr','x_eff_nb']]
+# rpt_df = test_df[['cdate','cp','pctlag1']]
+
+cdate_l       = [x_s      for x_s in test_df['cdate']]
+cp_l          = [str(x_f) for x_f in test_df['cp']]
+pctlag1_l     = [str(x_f) for x_f in test_df['pctlag1']]
+pctlead_l     = [str(x_f) for x_f in test_df['pctlead']]
+actual_dir_l  = []
+for x_f in test_df['actual_dir']:
+  if x_f > 0:
+    actual_dir_l.append('Positive')
+  else:
+    actual_dir_l.append('Negative')
+prob_lr_l     = [str(x_f) for x_f in test_df['prob_lr']]
+pdir_lr_l     = [str(x_f) for x_f in test_df['pdir_lr']]
+pdir_nb_l     = [str(x_f) for x_f in test_df['pdir_nb']]
+accuracy_lr_l = [x_s      for x_s in test_df['accuracy_lr']]
+accuracy_nb_l = [x_s      for x_s in test_df['accuracy_nb']]
+x_eff_lr_l    = [str(x_f) for x_f in test_df['x_eff_lr']]
+x_eff_nb_l    = [str(x_f) for x_f in test_df['x_eff_nb']]
+pctlead_l[-1]     = 'Unknown'
+actual_dir_l[-1]  = 'Unknown'
+accuracy_lr_l[-1] = 'Unknown'
+accuracy_nb_l[-1] = 'Unknown'
+x_eff_lr_l[-1]    = 'Unknown'
+x_eff_nb_l[-1]    = 'Unknown'
+
+rpt_df = pd.DataFrame({
+'cdate':         cdate_l
+,'cp':           cp_l
+,'pctlag1':      pctlag1_l      
+,'pctlead':      pctlead_l      
+,'actual_dir':   actual_dir_l   
+,'prob_lr':      prob_lr_l      
+,'pdir_lr':      pdir_lr_l      
+,'pdir_nb':      pdir_nb_l      
+,'accuracy_lr':  accuracy_lr_l  
+,'accuracy_nb':  accuracy_nb_l  
+,'x_eff_lr':     x_eff_lr_l     
+,'x_eff_nb':     x_eff_nb_l     
+})
+pdb.set_trace()
+rpt_df.head()
+rpt_df.tail()
+
+rpt_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
+rpt_html_s = rpt_df.to_html(index=False)
+# myf_s = '_predictions'+str(yr)+'.erb'
+# Currently I should want only the last one:
+myf_s = '_predictions.erb'
+with open(myf_s, 'w') as myf:
+  myf.write(rpt_html_s)
 
 'bye'
 

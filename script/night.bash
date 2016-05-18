@@ -12,7 +12,7 @@ mkdir -p ${SPY611}/public/csv/
 cd       ${SPY611}/public/csv/
 
 # I should get prices
-${SPY611}/script/wgetGSPCnight.bash
+echo ${SPY611}/script/wgetGSPCnight.bash
 
 # I should generate features from prices:
 ${HOME}/anaconda3/bin/python ${SPY611}/script/genf.py GSPC2.csv
@@ -24,7 +24,7 @@ rm -rf   /tmp/ddata/
 mkdir -p /tmp/ddata/
 cd       /tmp/ddata/
 cp ${SPY611}/public/csv/ftrGSPC2.csv /tmp/ddata/
-STARTYR=1981
+STARTYR=2015
 ENDYR=2016
 ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
 
