@@ -136,9 +136,6 @@ for yr in range(startyr,1+finalyr):
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
 # I should create a 2nd DF for reporting.
-# rpt_df = test_df[['cdate','cp','pctlag1','pctlead','actual_dir','prob_lr','pdir_lr','pdir_nb','accuracy_lr','accuracy_nb','x_eff_lr','x_eff_nb']]
-# rpt_df = test_df[['cdate','cp','pctlag1']]
-
 cdate_l       = [x_s      for x_s in test_df['cdate']]
 cp_l          = [str(x_f) for x_f in test_df['cp']]
 pctlag1_l     = [str(x_f) for x_f in test_df['pctlag1']]
@@ -174,7 +171,7 @@ accuracy_nb_l[-1] = 'Unknown'
 x_eff_lr_l[-1]    = 'Unknown'
 x_eff_nb_l[-1]    = 'Unknown'
 
-rpt_df = pd.DataFrame({
+rpt1_df = pd.DataFrame({
 'cdate':         cdate_l
 ,'cp':           cp_l
 ,'pctlag1':      pctlag1_l      
@@ -189,7 +186,7 @@ rpt_df = pd.DataFrame({
 ,'x_eff_nb':     x_eff_nb_l     
 })
 
-rpt2_df = rpt_df[['cdate'
+rpt2_df = rpt1_df[['cdate'
 ,'cp'
 ,'pctlag1'
 ,'pctlead'  
@@ -203,11 +200,10 @@ rpt2_df = rpt_df[['cdate'
 ,'x_eff_nb'
 ]]
 
-rpt2_df.head()
-rpt2_df.tail()
+rpt3_df = rpt2_df.sort_values('cdate', ascending=False)
 
-rpt2_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
-rpt_html_s = rpt2_df.to_html(index=False)
+rpt3_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
+rpt_html_s = rpt3_df.to_html(index=False)
 # myf_s = '_predictions'+str(yr)+'.erb'
 # Currently I should want only the last one:
 myf_s = '_predictions.erb'
