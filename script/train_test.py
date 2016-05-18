@@ -135,6 +135,9 @@ for yr in range(startyr,1+finalyr):
   #
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
+  # I should create a 2nd DF for reporting.
+  rpt_df = test_df[['cdate','cp','pctlag1','pctlead','actual_dir','prob_lr','pdir_lr','pdir_nb','accuracy_lr','accuracy_nb','x_eff_lr','x_eff_nb']]
+  rpt_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
 
 'bye'
 
