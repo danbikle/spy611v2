@@ -50,3 +50,6 @@ body a.body_a:hover {
     background-color: #EEEEEE;
     color: #BB0000; 
 }
+
+.predictions > table tr:nth-child(even) {
+  background-color: #EEEEEE; }
