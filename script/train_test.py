@@ -178,11 +178,26 @@ rpt_df = pd.DataFrame({
 ,'x_eff_nb':     x_eff_nb_l     
 })
 pdb.set_trace()
-rpt_df.head()
-rpt_df.tail()
 
-rpt_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
-rpt_html_s = rpt_df.to_html(index=False)
+rpt2_df = rpt_df[['cdate'
+,'cp'
+,'pctlag1'
+,'pctlead'  
+,'actual_dir'
+,'prob_lr'
+,'pdir_lr'
+,'pdir_nb'
+,'accuracy_lr'
+,'accuracy_nb'
+,'x_eff_lr'
+,'x_eff_nb'
+]]
+
+rpt2_df.head()
+rpt2_df.tail()
+
+rpt2_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
+rpt_html_s = rpt2_df.to_html(index=False)
 # myf_s = '_predictions'+str(yr)+'.erb'
 # Currently I should want only the last one:
 myf_s = '_predictions.erb'
