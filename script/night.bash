@@ -44,7 +44,6 @@ cp /tmp/ddata/plot*.png ${SPY611}/public/img/
 # I should now have an erb file in /tmp/ddata/
 cp /tmp/ddata/_predictions.erb ${SPY611}/public/
 # I should enhance the table-element:
-sed -i  1d          ${SPY611}/public/_predictions.erb
-sed -i '1i <table>' ${SPY611}/public/_predictions.erb
-
+${SPY611}/script/sed_pred.bash
 exit
+

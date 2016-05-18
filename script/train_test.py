@@ -58,11 +58,11 @@ for yr in range(startyr,1+finalyr):
   label_test_a  = y_test_a > train_median
   prob_lr_l        = []
   predictions_lr_l = []
-  x_eff_lr_l       = [0.0]
+  eff1d_lr_l       = [0.0]
   recent_eff_lr_l  = [0.0]
   acc_lr_l         = []
   predictions_nb_l = []
-  x_eff_nb_l       = [0.0]
+  eff1d_nb_l       = [0.0]
   recent_eff_nb_l  = [0.0]
   acc_nb_l         = []
   xcount           = -1
@@ -83,15 +83,15 @@ for yr in range(startyr,1+finalyr):
       predictions_nb_l.append(-1) # down prediction
     # I should save effectiveness of each prediction:
     pctlead = y_test_a[xcount]
-    x_eff_lr_l.append(predictions_lr_l[xcount]*pctlead)
-    x_eff_nb_l.append(predictions_nb_l[xcount]*pctlead)
+    eff1d_lr_l.append(predictions_lr_l[xcount]*pctlead)
+    eff1d_nb_l.append(predictions_nb_l[xcount]*pctlead)
     # I should save recent effectiveness of each prediction:
     if (xcount < 5):
       recent_eff_lr_l.append(0.0)
       recent_eff_nb_l.append(0.0)
     else:
-      recent_eff_lr_l.append(np.mean(x_eff_lr_l[-5:]))
-      recent_eff_nb_l.append(np.mean(x_eff_nb_l[-5:]))
+      recent_eff_lr_l.append(np.mean(eff1d_lr_l[-5:]))
+      recent_eff_nb_l.append(np.mean(eff1d_nb_l[-5:]))
     # I should save accuracy of each prediction
     #
     if ((pctlead > 0) and (aprediction_lr > 0.5)):
@@ -118,7 +118,7 @@ for yr in range(startyr,1+finalyr):
   #
   test_df['prob_lr']       = prob_lr_l
   test_df['pdir_lr']       = predictions_lr_l
-  test_df['x_eff_lr']      = x_eff_lr_l[1:]
+  test_df['eff1d_lr']      = eff1d_lr_l[1:]
   test_df['recent_eff_lr'] = recent_eff_lr_l[1:]
   if (len(test_df) - len(acc_lr_l) == 1):
     # I should deal with most recent observation:
@@ -126,7 +126,7 @@ for yr in range(startyr,1+finalyr):
   test_df['accuracy_lr'] = acc_lr_l
   #
   test_df['pdir_nb']       = predictions_nb_l
-  test_df['x_eff_nb']      = x_eff_nb_l[1:]
+  test_df['eff1d_nb']      = eff1d_nb_l[1:]
   test_df['recent_eff_nb'] = recent_eff_nb_l[1:]
   if (len(test_df) - len(acc_nb_l) == 1):
     # I should deal with most recent observation:
@@ -162,14 +162,14 @@ for x_f in test_df['pdir_nb']:
 
 accuracy_lr_l = [x_s      for x_s in test_df['accuracy_lr']]
 accuracy_nb_l = [x_s      for x_s in test_df['accuracy_nb']]
-x_eff_lr_l    = [str(x_f) for x_f in test_df['x_eff_lr']]
-x_eff_nb_l    = [str(x_f) for x_f in test_df['x_eff_nb']]
+eff1d_lr_l    = [str(x_f) for x_f in test_df['eff1d_lr']]
+eff1d_nb_l    = [str(x_f) for x_f in test_df['eff1d_nb']]
 pctlead_l[-1]     = 'Unknown'
 actual_dir_l[-1]  = 'Unknown'
 accuracy_lr_l[-1] = 'Unknown'
 accuracy_nb_l[-1] = 'Unknown'
-x_eff_lr_l[-1]    = 'Unknown'
-x_eff_nb_l[-1]    = 'Unknown'
+eff1d_lr_l[-1]    = 'Unknown'
+eff1d_nb_l[-1]    = 'Unknown'
 
 rpt1_df = pd.DataFrame({
 'cdate':         cdate_l
@@ -182,8 +182,8 @@ rpt1_df = pd.DataFrame({
 ,'pdir_nb':      pdir_nb_l      
 ,'accuracy_lr':  accuracy_lr_l  
 ,'accuracy_nb':  accuracy_nb_l  
-,'x_eff_lr':     x_eff_lr_l     
-,'x_eff_nb':     x_eff_nb_l     
+,'eff1d_lr':     eff1d_lr_l     
+,'eff1d_nb':     eff1d_nb_l     
 })
 
 rpt2_df = rpt1_df[['cdate'
@@ -196,8 +196,8 @@ rpt2_df = rpt1_df[['cdate'
 ,'pdir_nb'
 ,'accuracy_lr'
 ,'accuracy_nb'
-,'x_eff_lr'
-,'x_eff_nb'
+,'eff1d_lr'
+,'eff1d_nb'
 ]]
 
 rpt3_df = rpt2_df.sort_values('cdate', ascending=False)
