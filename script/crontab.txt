@@ -4,7 +4,7 @@
 40 12 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
 50 12 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon1_bash.txt 2>&1
 10 13 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon2_bash.txt 2>&1
-49 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
-59 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
+45 20 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
+55 20 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
 # end
 
