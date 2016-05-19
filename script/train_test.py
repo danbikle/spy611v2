@@ -56,12 +56,13 @@ for yr in range(startyr,1+finalyr):
   x_test_a = test_a[:,pctlag1_i:end_i]
   y_test_a = test_a[:,pctlead_i]
   label_test_a  = y_test_a > train_median
+  prob_lr_l        = []
   predictions_lr_l = []
-  x_eff_lr_l       = [0.0]
+  eff1d_lr_l       = [0.0]
   recent_eff_lr_l  = [0.0]
   acc_lr_l         = []
   predictions_nb_l = []
-  x_eff_nb_l       = [0.0]
+  eff1d_nb_l       = [0.0]
   recent_eff_nb_l  = [0.0]
   acc_nb_l         = []
   xcount           = -1
@@ -71,6 +72,7 @@ for yr in range(startyr,1+finalyr):
     xr_a           = xf_a.reshape(1, -1)
     aprediction_lr = clf_lr.predict_proba(xr_a)[0,1]
     aprediction_nb = clf_nb.predict(xr_a)[0]
+    prob_lr_l.append(aprediction_lr)
     if (aprediction_lr > 0.5):
       predictions_lr_l.append(1)  # up   prediction
     else:
@@ -81,41 +83,42 @@ for yr in range(startyr,1+finalyr):
       predictions_nb_l.append(-1) # down prediction
     # I should save effectiveness of each prediction:
     pctlead = y_test_a[xcount]
-    x_eff_lr_l.append(predictions_lr_l[xcount]*pctlead)
-    x_eff_nb_l.append(predictions_nb_l[xcount]*pctlead)
+    eff1d_lr_l.append(predictions_lr_l[xcount]*pctlead)
+    eff1d_nb_l.append(predictions_nb_l[xcount]*pctlead)
     # I should save recent effectiveness of each prediction:
     if (xcount < 5):
       recent_eff_lr_l.append(0.0)
       recent_eff_nb_l.append(0.0)
     else:
-      recent_eff_lr_l.append(np.mean(x_eff_lr_l[-5:]))
-      recent_eff_nb_l.append(np.mean(x_eff_nb_l[-5:]))
+      recent_eff_lr_l.append(np.mean(eff1d_lr_l[-5:]))
+      recent_eff_nb_l.append(np.mean(eff1d_nb_l[-5:]))
     # I should save accuracy of each prediction
     #
     if ((pctlead > 0) and (aprediction_lr > 0.5)):
-      acc_lr_l.append('tp')
+      acc_lr_l.append('True Positive')
     elif ((pctlead > 0) and (aprediction_lr < 0.5)):
-      acc_lr_l.append('fn')
+      acc_lr_l.append('False Negative')
     elif ((pctlead < 0) and (aprediction_lr > 0.5)):
-      acc_lr_l.append('fp')
+      acc_lr_l.append('False Positive')
     else:
-      acc_lr_l.append('tn')
+      acc_lr_l.append('True Negative')
     #
     if ((pctlead > 0) and (aprediction_nb == True)):
-      acc_nb_l.append('tp')
+      acc_nb_l.append('True Positive')
     elif ((pctlead > 0) and (aprediction_nb == False)):
-      acc_nb_l.append('fn')
+      acc_nb_l.append('False Negative')
     elif ((pctlead < 0) and (aprediction_nb == True)):
-      acc_nb_l.append('fp')
+      acc_nb_l.append('False Positive')
     else:
-      acc_nb_l.append('tn')
+      acc_nb_l.append('True Negative')
     #
     'end for'
   # I should save predictions, eff, acc, so I can report later.
   test_df['actual_dir']    = np.sign(test_df['pctlead'])
   #
+  test_df['prob_lr']       = prob_lr_l
   test_df['pdir_lr']       = predictions_lr_l
-  test_df['x_eff_lr']      = x_eff_lr_l[1:]
+  test_df['eff1d_lr']      = eff1d_lr_l[1:]
   test_df['recent_eff_lr'] = recent_eff_lr_l[1:]
   if (len(test_df) - len(acc_lr_l) == 1):
     # I should deal with most recent observation:
@@ -123,7 +126,7 @@ for yr in range(startyr,1+finalyr):
   test_df['accuracy_lr'] = acc_lr_l
   #
   test_df['pdir_nb']       = predictions_nb_l
-  test_df['x_eff_nb']      = x_eff_nb_l[1:]
+  test_df['eff1d_nb']      = eff1d_nb_l[1:]
   test_df['recent_eff_nb'] = recent_eff_nb_l[1:]
   if (len(test_df) - len(acc_nb_l) == 1):
     # I should deal with most recent observation:
@@ -132,6 +135,80 @@ for yr in range(startyr,1+finalyr):
   #
   # I should write to CSV:
   test_df.to_csv('predictions'+str(yr)+'.csv', float_format='%4.3f', index=False)
+# I should create a 2nd DF for reporting.
+cdate_l       = [x_s      for x_s in test_df['cdate']]
+cp_l          = [str(x_f) for x_f in test_df['cp']]
+pctlag1_l     = [str(x_f) for x_f in test_df['pctlag1']]
+pctlead_l     = [str(x_f) for x_f in test_df['pctlead']]
+actual_dir_l  = []
+for x_f in test_df['actual_dir']:
+  if x_f > 0:
+    actual_dir_l.append('Positive')
+  else:
+    actual_dir_l.append('Negative')
+prob_lr_l     = [str(x_f)[:6] for x_f in test_df['prob_lr']]
+pdir_lr_l     = []
+for x_f in test_df['pdir_lr']:
+  if x_f > 0:
+    pdir_lr_l.append('Positive')
+  else:
+    pdir_lr_l.append('Negative')
+pdir_nb_l     = []
+for x_f in test_df['pdir_nb']:
+  if x_f > 0:
+    pdir_nb_l.append('Positive')
+  else:
+    pdir_nb_l.append('Negative')
+
+accuracy_lr_l = [x_s      for x_s in test_df['accuracy_lr']]
+accuracy_nb_l = [x_s      for x_s in test_df['accuracy_nb']]
+eff1d_lr_l    = [str(x_f) for x_f in test_df['eff1d_lr']]
+eff1d_nb_l    = [str(x_f) for x_f in test_df['eff1d_nb']]
+pctlead_l[-1]     = 'Unknown'
+actual_dir_l[-1]  = 'Unknown'
+accuracy_lr_l[-1] = 'Unknown'
+accuracy_nb_l[-1] = 'Unknown'
+eff1d_lr_l[-1]    = 'Unknown'
+eff1d_nb_l[-1]    = 'Unknown'
+
+rpt1_df = pd.DataFrame({
+'cdate':         cdate_l
+,'cp':           cp_l
+,'pctlag1':      pctlag1_l      
+,'pctlead':      pctlead_l      
+,'actual_dir':   actual_dir_l   
+,'prob_lr':      prob_lr_l      
+,'pdir_lr':      pdir_lr_l      
+,'pdir_nb':      pdir_nb_l      
+,'accuracy_lr':  accuracy_lr_l  
+,'accuracy_nb':  accuracy_nb_l  
+,'eff1d_lr':     eff1d_lr_l     
+,'eff1d_nb':     eff1d_nb_l     
+})
+
+rpt2_df = rpt1_df[['cdate'
+,'cp'
+,'pctlag1'
+,'pctlead'  
+,'actual_dir'
+,'prob_lr'
+,'pdir_lr'
+,'pdir_nb'
+,'accuracy_lr'
+,'accuracy_nb'
+,'eff1d_lr'
+,'eff1d_nb'
+]]
+
+rpt3_df = rpt2_df.sort_values('cdate', ascending=False)
+
+rpt3_df.to_csv('rpt_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
+rpt_html_s = rpt3_df.to_html(index=False)
+# myf_s = '_predictions'+str(yr)+'.erb'
+# Currently I should want only the last one:
+myf_s = '_predictions.erb'
+with open(myf_s, 'w') as myf:
+  myf.write(rpt_html_s)
 
 'bye'
 

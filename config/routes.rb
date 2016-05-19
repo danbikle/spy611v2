@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'predictions/index'
+
   get  'btests/:yr', to: 'btests#index'
   get  'posts/index'
   root 'posts#index'
