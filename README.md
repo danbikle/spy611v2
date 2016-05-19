@@ -25,19 +25,17 @@ ruby ruby-dev sqlite3
   2. Install in bash shell. 
   3. Test to check path and versions:
 
-  ```bash
+```bash
   cd Downloads
   wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
   bash Anaconda3-4.0.0-Linux-x86_64.sh
   bash
-  ```bash
   which python
  
-    /home/ron/anaconda3/bin/python
-  ```bash
+    /home/don/anaconda3/bin/python
   python -V
   Python 3.5.1 :: Anaconda 4.0.0 (64-bit)
-
+```
 
 
 * Next, I created an account named r5 for my Rails 5 efforts:
