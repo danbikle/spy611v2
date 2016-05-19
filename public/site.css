@@ -5,7 +5,18 @@
     padding-bottom: 5px;
 }
 
-body p{
+h1,h2,h3 {padding-left: 11px;}
+
+body p {
+    padding-left: 11px;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #003300;
+    font-weight: bold;
+}
+
+body li{
     font-family: sans-serif;
     font-size: 1.5rem;
     line-height: 1.5;
@@ -34,6 +45,23 @@ body a.body_a:hover {
     color: #330000;
     font-weight: bold;
 }
+
+pre {
+    padding-left: 11px;
+    background-color: #DDDDDD;
+}
+
+code.software{
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #330000;
+    font-weight: bold;
+}
+
+
+/* rounded corners in css3 */
+.round_corner15px {border-radius: 15px;}
+
 
 .my-bottom-nav {
     background-color: #373a3c;
