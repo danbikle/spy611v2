@@ -3,12 +3,13 @@
 
 %script(src="/d3/d3.js")
 
-d3.csv('/csv/allpredictions.csv',rowf)
+:javascript
+  d3.csv('/csv/mypredictions.csv')
+    .row(function(d) {
+      return {'cdate':d.cdate,'cp':d.cp}
+    })
+    .get(function(error, rows) {
+      rows
+      console.log(rows)
+    })
 
-function rowf(d) {
-  'hello'
-  d
-  return {
-    ky: d.cdate
-  };
-}
