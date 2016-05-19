@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'aggbt/index'
+
   get 'software/index'
 
   get 'predictions/index'
