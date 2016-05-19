@@ -24,3 +24,189 @@
     libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
     libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
     ruby ruby-dev sqlite3
+
+
+
+%ul
+  %li Next, I created an account named r5 for my Rails 5 efforts:
+
+
+%pre.round_corner15px
+  %code.software
+    sudo useradd -m -s /bin/bash r5
+    sudo passwd r5
+
+
+%ul
+  %li I logged into r5:
+
+
+%pre.round_corner15px
+  %code.software
+    ssh -YA r5@localhost
+
+%ul
+  %li In order to install Ruby 2.3.1 I ran some shell commands:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~
+    git clone https://github.com/rbenv/rbenv.git      .rbenv
+    git clone https://github.com/rbenv/ruby-build.git .rbenv/plugins/ruby-build
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init -)"'               >> ~/.bashrc
+    bash
+    rbenv install 2.3.1
+    rbenv global  2.3.1
+    gem install bundler
+
+%ul
+  %li Next I got Postgres ready for Rails:
+
+
+%pre.round_corner15px
+  %code.software
+    sudo su - postgres
+    psql
+    CREATE USER     r5 WITH SUPERUSER LOGIN;
+    ALTER  USER     r5 PASSWORD 'r5';
+    CREATE DATABASE r5;
+    CREATE DATABASE v2_development;
+    ^D
+    ^D
+
+%ul
+  %li Then, I cloned this repository:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~
+    git clone https://github.com/danbikle/spy611v2
+
+%ul
+  %li Next, I used bundler to enhance the repository:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~/spy611v2
+    bundle install
+
+%ul
+  %li Then, I started the Rails webserver on my laptop:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~/spy611v2
+    bin/rails server
+
+%ul
+  %li I used the webserver to serve a page to my browser.
+
+  %li At that point my dev-env was setup on my laptop.
+
+  %li I wanted to run spy611v2 on Heroku.
+
+  %li I created an account on heroku.com
+
+  %li I installed the heroku-client:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~
+    wget https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
+    tar zxf heroku-client.tgz
+    echo 'export PATH="${HOME}/heroku-client/bin:$PATH"' >> ~/.bashrc
+    bash
+
+%ul
+  %li I created an ssh-key for the r5 account:
+
+
+%pre.round_corner15px
+  %code.software
+    ssh-keygen -t rsa
+
+%ul
+  %li I used the heroku-client to upload the key to heroku:
+
+
+%pre.round_corner15px
+  %code.software
+    heroku keys:add
+
+%ul
+  %li I used the heroku-client to create an empty app on heroku:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~/spy611v2
+    heroku create spy611v2
+
+%ul
+  %li I filled the empty app with a git push command:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~/spy611v2
+    git push heroku master
+
+%ul
+  %li I used a browser to see the app on heroku.
+
+  %li When I git pull recent changes to the repository, I use these shell commands:
+
+
+%pre.round_corner15px
+  %code.software
+    cd ~/spy611v2
+    git pull origin master
+    bundle install
+
+%ul
+  %li Here is a demo screen dump:
+
+
+%pre.round_corner15px
+  %code.software
+    =render 'sof10'
+
+%ul
+  %li Next I installed Anaconda Python.
+
+%pre.round_corner15px
+  %code.software
+    cd ~
+    curl http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh > Anaconda3-4.0.0-Linux-x86_64.sh
+    bash Anaconda3-4.0.0-Linux-x86_64.sh
+    cd ~/anaconda3/bin
+    mv curl curl_ana
+    cd ~
+    echo 'export PATH=${HOME}/anaconda3/bin:$PATH' >> ~/.bashrc
+    bash
+    python
+    quit()
+
+%ul
+  %li I offer two ways to run the machine learning software.
+  %li During the day, 10 minutes before market close, I run this script:
+
+%pre.round_corner15px
+  %code.software
+    ${HOME}/spy611v2/script/noon.bash
+
+%ul
+  %li At night after closing prices are available I run this script:
+
+%pre.round_corner15px
+  %code.software
+    ${HOME}/spy611v2/script/night.bash
+
+%ul
+  %li If you have questions, e-me (Dan Bikle): bikle101@gmail.com
