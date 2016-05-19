@@ -1,10 +1,11 @@
 # ~/spy611v2/script/crontab.txt
 # This file should control when I get prices and git_pull.
 # This host is on Calif Time.
+59 4  * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night1_bash.txt 2>&1
 40 12 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
 50 12 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon1_bash.txt 2>&1
 10 13 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon2_bash.txt 2>&1
-29 21 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
-35 21 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
+29 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
+35 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night2_bash.txt 2>&1
 # end
 
