@@ -20,6 +20,25 @@ libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
 libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
 ruby ruby-dev sqlite3
 ```
+* I use Anaconda which provide open sources libraries for data science analysis:
+  1. Download Anaconda from Continuum.io 
+  2. Install in bash shell. 
+  3. Test to check path and versions:
+
+  ```bash
+  cd Downloads
+  wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
+  bash Anaconda3-4.0.0-Linux-x86_64.sh
+  bash
+  ```bash
+  which python
+ 
+    /home/ron/anaconda3/bin/python
+  ```bash
+  python -V
+  Python 3.5.1 :: Anaconda 4.0.0 (64-bit)
+
+
 
 * Next, I created an account named r5 for my Rails 5 efforts:
 
