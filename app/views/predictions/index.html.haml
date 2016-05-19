@@ -1,10 +1,16 @@
-%h1 Backtest #{params[:yr]}
-%img(src="/img/plot#{params[:yr]}.png")
+%h1 Predictions
+%h2 Logistic Regression (LR), Naive Bayes (NB)
+%br/
+.predictions
+  =render 'predictions'
+
+%img(src="/img/plot2016.png")
 
 %pre
   %code.rpt
-    =render "acc_eff#{params[:yr]}"
+    =render "btests/acc_eff2016"
 %hr/
+
 .my-bottom-nav
   %a(href="/")            spy611.com
   %a(href="/about")       About

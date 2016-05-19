@@ -50,3 +50,25 @@ body a.body_a:hover {
     background-color: #EEEEEE;
     color: #BB0000; 
 }
+
+.predictions > table tr:nth-child(even) {
+  background-color: #EEEEEE; }
+
+.predictions > table {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    margin-left: 20px;
+}
+
+.predictions > table th,td {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    padding:      3px;
+    font-size:    1.2rem;
+    line-height:  1.5;
+    color:        black;
+    font-weight:  bold;
+}
+
