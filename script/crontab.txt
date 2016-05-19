@@ -1,11 +1,10 @@
 # ~/spy611v2/script/crontab.txt
-# This file should control when I get prices.
-# This host is on UTC.
-# 12:50 PDT is 19:50 UTC
-# 12:50 PST is 20:50 UTC
-50 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon1_bash.txt 2>&1
-10 20 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon2_bash.txt 2>&1
-59 03 * * tue,wed,thu,fri,sat ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
-43 22 15 5 *                  ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
+# This file should control when I get prices and git_pull.
+# This host is on Calif Time.
+40 12 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
+50 12 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon1_bash.txt 2>&1
+10 13 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon2_bash.txt 2>&1
+49 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull1_bash.txt 2>&1
+59 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night_bash.txt 2>&1
 # end
 
