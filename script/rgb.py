@@ -66,5 +66,7 @@ for yr in range(startyr,1+finalyr):
   plt.close()
   print('New png file: ')
   print(pngf)
+  # I should save the red, green, blue data-points:
+  pred_df.to_csv('rgb_df'+str(yr)+'.csv', float_format='%4.3f', index=False)
 'bye'
 

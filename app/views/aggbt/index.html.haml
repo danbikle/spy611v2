@@ -14,9 +14,9 @@
     .row(function(d) {
       mydate  = new Date(d.cdate)
       myudate = parseInt((new Date(d.cdate).getTime() / 1000).toFixed(0))
-      myfloat = parseFloat(d.cp)
+      cp      = parseFloat(d.cp)
       // Rickshaw.js likes objects in this format:
-      return {'x':myudate,'y':myfloat}
+      return {'x':myudate,'y':cp}
     })
     .get(function(error, rows) {
       // I should access rows inside this function.
