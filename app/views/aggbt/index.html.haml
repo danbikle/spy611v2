@@ -33,7 +33,9 @@
         width: 1000, 
         height: 680, 
         series: [
-          {color: '#E00',data: redrows},{color: '#0E0',data: greenrows},{color: '#00E',data: bluerows}
+          {name: 'Naive Bayes',        color: '#E00',data: redrows},
+          {name: 'Logistic Regression',color: '#0E0',data: greenrows},
+          {name: 'Long Only',          color: '#00E',data: bluerows}
         ]
       })
       var xAxis = new Rickshaw.Graph.Axis.Time({
