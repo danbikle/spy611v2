@@ -7,22 +7,27 @@
 %script(src="/d3/d3.js")
 %script(src="/rickshaw.min.js")
 :javascript
+  // I should use d3.js to convert CSV file to array called rows
   d3.csv('/csv/mypredictions.csv')
+    // I should use row() to format each row in rows.
     .row(function(d) {
-      mydate = new Date(d.cdate)
+      mydate  = new Date(d.cdate)
       myudate = parseInt((new Date(d.cdate).getTime() / 1000).toFixed(0))
       myfloat = parseFloat(d.cp)
+      // Rickshaw.js likes objects in this format:
       return {'x':myudate,'y':myfloat}
     })
     .get(function(error, rows) {
-      // I should use a loop here to bump up mymin to larger value.
+      // I should access rows inside this function.
       mymin = 1000.0
+      // I should use a loop here to bump up mymin to larger value.
       rows.forEach(function(row){
         if (row.y < mymin) {
           mymin = row.y
         }
       })
       var graph = new Rickshaw.Graph( {
+        // I should us mymin here to give graph a better look:
         min: 0.95 * mymin,
         element: document.querySelector("#chart"),
         renderer: 'line',
