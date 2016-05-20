@@ -2,6 +2,7 @@
 
 #chart
 #previewSlider
+#rickshaw_legend
 
 %link(type="text/css" rel="stylesheet" href="/rickshaw.min.css")
 %script(src="/d3/d3.js")
@@ -40,12 +41,18 @@
       })
       var yAxis = new Rickshaw.Graph.Axis.Y({
         graph: graph,
-        tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+        // tickFormat: Rickshaw.Fixtures.Number.formatKMBT
       })
       var previewSlider = new Rickshaw.Graph.RangeSlider.Preview({
         graph: graph,
         element: document.querySelector("#previewSlider")
       })
+      
+      var legend = new Rickshaw.Graph.Legend( {
+        element: document.querySelector('#rickshaw_legend'),
+        graph: graph
+      })
+
       graph.render()
       xAxis.render()
       yAxis.render()

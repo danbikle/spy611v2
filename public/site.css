@@ -100,3 +100,8 @@ code.software{
     font-weight:  bold;
 }
 
+#rickshaw_legend {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 0 0 10px;
+}
