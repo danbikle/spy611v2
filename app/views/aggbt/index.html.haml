@@ -2,6 +2,7 @@
 %p Find me in app/views/aggbt/index.html.haml
 
 #chart
+#previewSlider
 
 %link(type="text/css" rel="stylesheet" href="/rickshaw.min.css")
 %script(src="/d3/d3.js")
@@ -41,6 +42,10 @@
       var xAxis = new Rickshaw.Graph.Axis.Time({
         graph: graph
       })
+      var previewSlider = new Rickshaw.Graph.RangeSlider.Preview({
+        graph: graph,
+        element: document.querySelector("#previewSlider")
+      });
       graph.render()
       xAxis.render();
     })
