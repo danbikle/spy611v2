@@ -1,9 +1,9 @@
 %h1 Aggbt#index
 %p Find me in app/views/aggbt/index.html.haml
 
-
 #chart
 
+%link(type="text/css" rel="stylesheet" href="/rickshaw.min.css")
 %script(src="/d3/d3.js")
 %script(src="/rickshaw.min.js")
 :javascript
@@ -16,15 +16,25 @@
     })
     .get(function(error, rows) {
       rows
+      mymin = 0.00
+      // I should use a loop here to bump up mymin to larger value.
       var graph = new Rickshaw.Graph( {
-        element: document.querySelector("#chart"), 
-        width: 285, 
-        height: 180, 
+        min: 100.0,
+        element: document.querySelector("#chart"),
+        renderer: 'line',
+        width: 985, 
+        height: 280, 
         series: [{
             color: 'steelblue',
             data: rows
         }]
       })
+      var xAxis = new Rickshaw.Graph.Axis.Time({
+        graph: graph
+      })
       graph.render()
+      xAxis.render();
     })
+
+
 
