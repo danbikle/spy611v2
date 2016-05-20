@@ -9,35 +9,28 @@
 %script(src="/rickshaw.min.js")
 :javascript
   // I should use d3.js to convert CSV file to array called rows
-  d3.csv('/csv/allpredictions.csv')
+  d3.csv('/csv/allrgb.csv')
     // I should use row() to format each row in rows.
-    .row(function(d) {
-      mydate  = new Date(d.cdate)
-      myudate = parseInt((new Date(d.cdate).getTime() / 1000).toFixed(0))
-      cp      = parseFloat(d.cp)
-      // Rickshaw.js likes objects in this format:
-      return {'x':myudate,'y':cp}
+    .row(function(arow) {
+      mydate   = new Date(arow.cdate)
+      myudate  = parseInt((new Date(arow.cdate).getTime() / 1000).toFixed(0))
+      cp       = parseFloat(arow.cp)
+      allgreen = parseFloat(arow.allgreen)
+      allred   = parseFloat(arow.allred)
+      return {'x':myudate,'y':cp,'allgreen':allgreen,'allred':allred}
     })
     .get(function(error, rows) {
       // I should access rows inside this function.
-      mymin = 1000.0
-      // I should use a loop here to bump up mymin to larger value.
-      rows.forEach(function(row){
-        if (row.y < mymin) {
-          mymin = row.y
-        }
-      })
+      redrows  = rows.map(function(arow) {return {'x':arow.x, 'y':arow.allred}})
+      bluerows = rows.map(function(arow) {return {'x':arow.x, 'y':arow.y}})
       var graph = new Rickshaw.Graph( {
         // I should us mymin here to give graph a better look:
-        min: 0.95 * mymin,
+        min: 100.0,
         element: document.querySelector("#chart"),
         renderer: 'line',
         width: 1000, 
         height: 680, 
-        series: [{
-            color: 'steelblue',
-            data: rows
-        }]
+        series: [{color: '#00E',data: bluerows},{color: '#E00',data: redrows},]
       })
       var xAxis = new Rickshaw.Graph.Axis.Time({
         graph: graph
