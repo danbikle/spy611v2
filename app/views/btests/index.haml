@@ -4,12 +4,4 @@
 %pre
   %code.rpt
     =render "acc_eff#{params[:yr]}"
-%hr/
-.my-bottom-nav
-  %a(href="/")            spy611.com
-  %a(href="/about")       About
-  %a(href="/blog")        Blog
-  %a(href="/contact")     Contact
-  %a(href="/backtests")   Backtests
-  %a(href="/predictions") Predictions
-  %a(href="/software")    Software
+=render '/layouts/bottom_links'
