@@ -67,10 +67,6 @@ for yr in range(startyr,1+finalyr):
   pred_df['red']   = red_l[:-1]
   pred_df['green'] = green_l[:-1]
   # I should add allred_l, allgreen_l to df:
-  pdb.set_trace()
-  len(red_l[:-1])
-  len(allred_l[-len(red_l):-1])
-  #
   pred_df['allred']   = allred_l[  -len(red_l):  -1]
   pred_df['allgreen'] = allgreen_l[-len(green_l):-1]
   
