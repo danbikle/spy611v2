@@ -1,5 +1,4 @@
-%h1 Aggbt#index
-%p Find me in app/views/aggbt/index.html.haml
+%h1 Aggregated Backtests
 
 #chart
 #previewSlider
@@ -27,6 +26,7 @@
       var graph = new Rickshaw.Graph( {
         // I should us mymin here to give graph a better look:
         min: 100.0,
+        max: 4100.0,
         element: document.querySelector("#chart"),
         renderer: 'line',
         width: 1000, 
