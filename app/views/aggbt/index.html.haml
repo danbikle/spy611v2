@@ -1,15 +1,30 @@
 %h1 Aggbt#index
 %p Find me in app/views/aggbt/index.html.haml
 
-%script(src="/d3/d3.js")
 
+#chart
+
+%script(src="/d3/d3.js")
+%script(src="/rickshaw.min.js")
 :javascript
   d3.csv('/csv/mypredictions.csv')
     .row(function(d) {
-      return {'cdate':d.cdate,'cp':d.cp}
+      mydate = new Date(d.cdate)
+      myudate = parseInt((new Date(d.cdate).getTime() / 1000).toFixed(0))
+      myfloat = parseFloat(d.cp)
+      return {'x':myudate,'y':myfloat}
     })
     .get(function(error, rows) {
       rows
-      console.log(rows)
+      var graph = new Rickshaw.Graph( {
+        element: document.querySelector("#chart"), 
+        width: 285, 
+        height: 180, 
+        series: [{
+            color: 'steelblue',
+            data: rows
+        }]
+      })
+      graph.render()
     })
 
