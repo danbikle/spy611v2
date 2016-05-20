@@ -21,8 +21,9 @@
     })
     .get(function(error, rows) {
       // I should access rows inside this function.
-      redrows  = rows.map(function(arow) {return {'x':arow.x, 'y':arow.allred}})
-      bluerows = rows.map(function(arow) {return {'x':arow.x, 'y':arow.y}})
+      redrows   = rows.map(function(arow) {return {'x':arow.x, 'y':arow.allred}})
+      greenrows = rows.map(function(arow) {return {'x':arow.x, 'y':arow.allgreen}})
+      bluerows  = rows.map(function(arow) {return {'x':arow.x, 'y':arow.y}})
       var graph = new Rickshaw.Graph( {
         // I should us mymin here to give graph a better look:
         min: 100.0,
@@ -30,7 +31,9 @@
         renderer: 'line',
         width: 1000, 
         height: 680, 
-        series: [{color: '#00E',data: bluerows},{color: '#E00',data: redrows},]
+        series: [
+          {color: '#E00',data: redrows},{color: '#0E0',data: greenrows},{color: '#00E',data: bluerows}
+        ]
       })
       var xAxis = new Rickshaw.Graph.Axis.Time({
         graph: graph
