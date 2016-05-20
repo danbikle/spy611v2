@@ -172,13 +172,23 @@
 %ul
   %li Here is a demo screen dump:
 
-
 %pre.round_corner15px
   %code.software
     =render 'sof10'
 
 %ul
-  %li Next I installed Anaconda Python.
+  %li After I followed the above steps, I started the Rails web server:
+
+%pre.round_corner15px
+  %code.software
+    cd ${HOME}/spy611v2
+    bin/rails s
+
+%ul
+  %li I used my browser to see the website running on my laptop: http://localhost:3000
+
+%ul
+  %li Next, in another shell window, I installed Anaconda Python:
 
 %pre.round_corner15px
   %code.software
