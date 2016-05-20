@@ -15,11 +15,15 @@
       return {'x':myudate,'y':myfloat}
     })
     .get(function(error, rows) {
-      rows
-      mymin = 0.00
       // I should use a loop here to bump up mymin to larger value.
+      mymin = 1000.0
+      rows.forEach(function(row){
+        if (row.y < mymin) {
+          mymin = row.y
+        }
+      })
       var graph = new Rickshaw.Graph( {
-        min: 100.0,
+        min: 0.95 * mymin,
         element: document.querySelector("#chart"),
         renderer: 'line',
         width: 985, 
