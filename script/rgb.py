@@ -21,6 +21,18 @@ if (len(sys.argv) < 3):
 startyr = int(sys.argv[1])
 finalyr = int(sys.argv[2])
 
+# I should collect some data from startyr
+predf   = 'predictions'+str(startyr)+'.csv'
+pred_df = pd.read_csv(predf)
+cp_l    = [p_f for p_f in pred_df['cp']]
+startcp = cp_l[0]
+# allred_l   should hold all red   points
+# allgreen_l should hold all green points
+allred_l   = [startcp]
+allgreen_l = [startcp]
+allred_i   = 0 # counter
+allgreen_i = 0 # counter
+
 # I should create a loop which does train and test for each yr.
 for yr in range(startyr,1+finalyr):
   predf   = 'predictions'+str(yr)+'.csv'
@@ -38,16 +50,30 @@ for yr in range(startyr,1+finalyr):
   green_l = [cp_l[0]]
   rcount  = 0
   # I should grow red_l, green_l
+  # I should grow allred_l, allgreen_l
   for rdelta in pred_df['rdelta']:
-    rcount += 1
-    red_l.append(red_l[rcount-1]+rdelta)
+    rcount   += 1
+    allred_i += 1
+    red_l.append(      red_l[rcount  -1]+rdelta)
+    allred_l.append(allred_l[allred_i-1]+rdelta)
   gcount  = 0
   for gdelta in pred_df['gdelta']:
-    gcount += 1
-    green_l.append(green_l[gcount-1]+gdelta)
+    gcount     += 1
+    allgreen_i += 1
+    green_l.append(      green_l[gcount    -1]+gdelta)
+    allgreen_l.append(allgreen_l[allgreen_i-1]+rdelta)
+    
   # I should add red_l, green_l to df:
   pred_df['red']   = red_l[:-1]
   pred_df['green'] = green_l[:-1]
+  # I should add allred_l, allgreen_l to df:
+  pdb.set_trace()
+  len(red_l[:-1])
+  len(allred_l[-len(red_l):-1])
+  #
+  pred_df['allred']   = allred_l[  -len(red_l):  -1]
+  pred_df['allgreen'] = allgreen_l[-len(green_l):-1]
+  
   # matplotlib likes dates:
   cdate_l = [datetime.datetime.strptime(row, "%Y-%m-%d") for row in pred_df['cdate'].values]
 
