@@ -9,7 +9,7 @@
 %script(src="/rickshaw.min.js")
 :javascript
   // I should use d3.js to convert CSV file to array called rows
-  d3.csv('/csv/mypredictions.csv')
+  d3.csv('/csv/allpredictions.csv')
     // I should use row() to format each row in rows.
     .row(function(d) {
       mydate  = new Date(d.cdate)
@@ -32,8 +32,8 @@
         min: 0.95 * mymin,
         element: document.querySelector("#chart"),
         renderer: 'line',
-        width: 985, 
-        height: 280, 
+        width: 1000, 
+        height: 680, 
         series: [{
             color: 'steelblue',
             data: rows
@@ -42,12 +42,17 @@
       var xAxis = new Rickshaw.Graph.Axis.Time({
         graph: graph
       })
+      var yAxis = new Rickshaw.Graph.Axis.Y({
+        graph: graph,
+        tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+      })
       var previewSlider = new Rickshaw.Graph.RangeSlider.Preview({
         graph: graph,
         element: document.querySelector("#previewSlider")
-      });
+      })
       graph.render()
-      xAxis.render();
+      xAxis.render()
+      yAxis.render()
     })
 
 
