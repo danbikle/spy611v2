@@ -62,6 +62,11 @@ for yr in range(startyr,1+finalyr):
     allgreen_i += 1
     green_l.append(      green_l[gcount    -1]+gdelta)
     allgreen_l.append(allgreen_l[allgreen_i-1]+rdelta)
+    pdb.set_trace()
+    red_l
+    allred_l
+    green_l
+    allgreen_l
     
   # I should add red_l, green_l to df:
   pred_df['red']   = red_l[:-1]
