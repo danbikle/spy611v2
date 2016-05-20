@@ -50,6 +50,11 @@ ${SPY611}/script/sed_pred.bash
 head -1 predictions2016.csv                 > allpredictions.csv
 cat predictions*csv | sort | grep -v cdate >> allpredictions.csv
 cp allpredictions.csv ${SPY611}/public/csv/
+
+head -1 rgb_df2016.csv                 > allrgb.csv
+cat rgb_df*csv | sort | grep -v cdate >> allrgb.csv
+cp allrgb.csv ${SPY611}/public/csv/
+
 # I should copy new data,files to heroku,gh,bit
 cd $SPY611
 script/git_push.bash

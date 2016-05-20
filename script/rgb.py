@@ -1,6 +1,7 @@
-# rgb.py
+# ~/spy611v2/script/rgb.py
 
 # This script should help me build the red, green,blue visualizations.
+# This script is called by ~/spy611v2/script/night.bash
 
 import numpy  as np
 import pandas as pd
