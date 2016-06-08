@@ -51,9 +51,9 @@ head -1 rgb_df2016.csv                 > allrgb.csv
 cat rgb_df*csv | sort | grep -v cdate >> allrgb.csv
 cp allrgb.csv ${SPY611}/public/csv/
 
-# I should copy new data,files to heroku,gh,bit
+# I should (not) copy new data,files to heroku,gh,bit
 cd $SPY611
-script/git_push.bash
+# script/git_push.bash
 
 exit
 

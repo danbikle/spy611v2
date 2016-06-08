@@ -37,8 +37,8 @@ cp /tmp/ddata/_predictions.erb ${SPY611}/public/
 # I should enhance the table-element:
 ${SPY611}/script/sed_pred.bash
 
-# I should copy new data,files to heroku,gh,bit
+# I should (not) copy new data,files to heroku,gh,bit
 cd $SPY611
-script/git_push.bash
+# script/git_push.bash
 
 exit
