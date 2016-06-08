@@ -1,0 +1,26 @@
+[user]
+	name = Dan Bikle
+	email = bikle@bikle.com
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+
+[github]
+	user = danbikle
+
+[alias]
+	br = branch
+	df = diff
+	pom = push origin master
+	st = status
+	uiau = update-index --assume-unchanged
+	gassu = update-index --assume-unchanged
+  	br = branch
+        ci = commit
+        cia = commit -a
+        ciam = commit -a -m
+        co = checkout
+        lg = log -p
