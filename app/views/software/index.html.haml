@@ -17,7 +17,24 @@
     %a(href='http://releases.ubuntu.com/16.04/ubuntu-16.04-desktop-amd64.iso' target='x')
       http://releases.ubuntu.com/16.04/ubuntu-16.04-desktop-amd64.iso
 
-  %li After installation, I enhanced Ubuntu with apt-get shell commands:
+  %li Replacing windows with Ubuntu 16.04 is actually a bit difficult.
+  %li So another option is to install VirtualBox on your laptop (Mac or Windows):
+  %li
+    %a(href='https://www.virtualbox.org/wiki/Downloads' target='x')
+      https://www.virtualbox.org/wiki/Downloads
+  %li After you install VirtualBox on your laptop, I have a OVA file you can use:
+  %li
+    %a(href='https://s3-us-west-2.amazonaws.com/bikleiq/ubsmall2016_0409.ova' target='x')
+      https://s3-us-west-2.amazonaws.com/bikleiq/ubsmall2016_0409.ova
+  %li The way to use the above file is to download it and then click on it.
+  %li VirtualBox should wakeup and 'import' ubsmall2016_0409.ova
+  %li Then inside the VirtualBox GUI you should click on the corresponding Virtual-host.
+  %li Then, you should see a login screen for 'ann'; the password is 'a'
+  %li VirtualBox can be finicky about networking so you might need to tinker with that in the settings.
+  %li A good way to tinker is turn off all network interfaces except the first.
+  %li If you have problems with VirtualBox, contact me (bikle101@gmail.com) and I might be able to help you out.
+
+  %li After installation (or VirtualBox), I enhanced Ubuntu with apt-get shell commands:
 
 %pre.round_corner15px
   %code.software
@@ -30,7 +47,24 @@
     libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
     ruby ruby-dev sqlite3
 
+%ul
+  %li Next I got Postgres ready for Rails:
 
+%pre.round_corner15px
+  %code.software
+    sudo su - postgres
+    psql
+    CREATE USER     r5 WITH SUPERUSER LOGIN;
+    ALTER  USER     r5 PASSWORD 'r5';
+    CREATE DATABASE r5;
+    CREATE DATABASE v2_development;
+
+
+%ul
+  %li Next, I exited from the above postgres environments:
+  %li Ctrl-D works nicely for both or...
+  %li to exit psql I can type \q
+  %li to exit the postgres shell I can type exit.
 
 %ul
   %li Next, I created an account named r5 for my Rails 5 efforts:
@@ -66,20 +100,6 @@
     rbenv global  2.3.1
     gem install bundler
 
-%ul
-  %li Next I got Postgres ready for Rails:
-
-
-%pre.round_corner15px
-  %code.software
-    sudo su - postgres
-    psql
-    CREATE USER     r5 WITH SUPERUSER LOGIN;
-    ALTER  USER     r5 PASSWORD 'r5';
-    CREATE DATABASE r5;
-    CREATE DATABASE v2_development;
-    ^D
-    ^D
 
 %ul
   %li Then, I cloned this repository:
