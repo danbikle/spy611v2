@@ -1,0 +1,12 @@
+ServerAliveInterval 30
+ServerAliveCountMax 4
+Host r126
+  HostName 52.40.157.126
+  Port 443
+  IdentityFile ~/.ssh/qqqoregon.pem
+  User r5
+Host u126
+  HostName 52.40.157.126
+  Port 443
+  IdentityFile ~/.ssh/qqqoregon.pem
+  User ubuntu
