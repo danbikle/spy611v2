@@ -78,3 +78,25 @@
     I should see something like this:
     %pre
       =render 'spy611aws11'
+  %li
+    I should verify that Python works:
+    %pre
+      =render 'spy611aws12'
+  %li
+    I should verify that Ruby works:
+    %pre
+      %code.bash
+        ubuntu@ip-172-30-0-57:~$ 
+        ubuntu@ip-172-30-0-57:~$ ruby -v
+        ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-linux]
+        ubuntu@ip-172-30-0-57:~$ 
+        ubuntu@ip-172-30-0-57:~$
+
+  %li
+    I should verify that Postgres works:
+    %pre
+      =render 'spy611aws13'
+  %li
+    I should verify that Rails works:
+    %pre
+      =render 'spy611aws14'

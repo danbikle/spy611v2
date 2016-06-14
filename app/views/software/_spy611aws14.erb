@@ -1,0 +1,32 @@
+<code class='bash'>ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ cat ~/spy611v2/script/railss2016.bash
+#!/bin/bash
+
+# ~/spy611v2/script/railss2016.bash
+
+# This script should start rails webserver on all interfaces which then listen on port 2016.
+
+cd $HOME
+cd spy611v2
+bin/rails s -p 2016 -b 0.0.0.0
+exit
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ 
+
+<hr />
+
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ ~/spy611v2/script/railss2016.bash
+=> Booting Puma
+=> Rails 5.0.0.rc1 application starting in development on http://0.0.0.0:2016
+=> Run `rails server -h` for more startup options
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 5.1. (called from block in &lt;top (required)> at /home/ubuntu/spy611v2/config/routes.rb:11)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 5.1. (called from block in &lt;top (required)> at /home/ubuntu/spy611v2/config/routes.rb:11)
+Puma starting in single mode...
+* Version 3.4.0 (ruby 2.3.1-p112), codename: Owl Bowl Brawl
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:2016
+Use Ctrl-C to stop
+</code>
