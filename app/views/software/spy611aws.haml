@@ -1,0 +1,80 @@
+%h1 How to deploy spy611.com to AWS
+
+%p I followed these steps to deploy spy611 to my AWS account.
+
+%ul
+  %li
+    Go to AWS console for Oregon:
+    %ul
+      %li https://us-west-2.console.aws.amazon.com
+  %li Create AWS account
+  %li Or login to existing AWS account
+  %li
+    Navigate to Oregon region in upper right corner:
+    %ul
+      %li https://us-west-2.console.aws.amazon.com
+  %li
+    Click EC2 link in upper left corner:
+    %ul
+      %li https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2
+  %li Click Launch Instance blue button
+  %li Click Community AMIs on left side.
+  %li
+    Search for this AMI:
+    %ul
+      %li ub4TSDS443sshd
+  %li If you find it, Click blue Select button on right side.
+  %li Specify you want a t2.medium instance with 4GB of Memory.
+  %li Click Next: Configure ...
+  %li Click Next: Add Storage
+  %li Click Next: Tag Instance
+  %li
+    Click Next: Configure Security ...
+    %ul
+      %li Click Add Rule:
+      %li
+        Custom TCP Rule:
+        %ul
+          %li HTTPS (about 1/2 way down)
+    %ul
+      %li
+        Click Add Rule:
+      %li
+        Custom TCP Rule:
+        %ul
+          %li Put 2016 in port-range-field
+          %li Set source to 'anywhere'
+
+  %li Intent above is to open ports 443 and 2016
+  %li I want to use 443 for ssh-traffic
+  %li I want to use 2016 for web-server traffic
+  %li Click Review Launch blue botton
+  %li Click Launch blue botton
+  %li Create (or pick existing) PEM key
+  %li I should see 'Launching' message from AWS.
+  %li
+    While waiting for launch, copy the key to ~/.ssh/tsds.pem:
+    %ul 
+      %li mkdir -p ~/.ssh/
+      %li cp ~/Downloads/whatever.pem ~/.ssh/tsds.pem
+      %li chmod 600 ~/.ssh/tsds.pem
+  %li
+    After launch, note the Public IP address of the new instance:
+    %ul
+      %li I should see something like this:
+      %li 54.201.123.142
+
+  %li
+    After launch, I create (or update) ~/.ssh/config with syntax like this:
+    %pre
+      =render 'spy611aws10'
+
+  %li
+    I should be able to login with simple shell command:
+    %pre
+      %code.bash ssh uws
+
+  %li
+    I should see something like this:
+    %pre
+      =render 'spy611aws11'
