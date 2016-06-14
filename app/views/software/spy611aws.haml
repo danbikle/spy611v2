@@ -100,3 +100,19 @@
     I should verify that Rails works:
     %pre
       =render 'spy611aws14'
+
+  %li I should see a copy of spy611.com at http://myip:2016
+  %li For example: http://54.201.123.142:2016
+
+  %li
+    I should verify that spy611 python scripts work:
+    %ul
+      %li cd ~/spy611v2/script
+      %li cat night.bash
+      %li ./night.bash
+  
+  %li
+    I should see something like this:
+    %pre
+      =render 'spy611aws15'
+
