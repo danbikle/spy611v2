@@ -1,0 +1,41 @@
+<code class='bash'>ubuntu@ip-172-30-0-57:~/spy611v2/script$ 
+ubuntu@ip-172-30-0-57:~/spy611v2/script$ cd ~
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ ls -la .ssh/
+total 12
+drwx------  2 ubuntu ubuntu 4096 Jun 13 22:21 .
+drwxr-xr-x 13 ubuntu ubuntu 4096 Jun 14 01:54 ..
+-rw-------  1 ubuntu ubuntu  779 Jun 14 01:24 authorized_keys
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ubuntu/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/ubuntu/.ssh/id_rsa.
+Your public key has been saved in /home/ubuntu/.ssh/id_rsa.pub.
+The key fingerprint is:
+25:af:4f:86:c7:37:e6:c7:2c:64:a8:6d:7a:51:eb:f6 ubuntu@ip-172-30-0-57
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|        . .      |
+|         +  .    |
+|        S .o .   |
+|         +o +    |
+|        oo==+o   |
+|        .=+++.+  |
+|        .+...+E  |
++-----------------+
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$ ls -la .ssh/
+total 20
+drwx------  2 ubuntu ubuntu 4096 Jun 14 02:09 .
+drwxr-xr-x 13 ubuntu ubuntu 4096 Jun 14 01:54 ..
+-rw-------  1 ubuntu ubuntu  779 Jun 14 01:24 authorized_keys
+-rw-------  1 ubuntu ubuntu 1679 Jun 14 02:09 id_rsa
+-rw-r--r--  1 ubuntu ubuntu  403 Jun 14 02:09 id_rsa.pub
+ubuntu@ip-172-30-0-57:~$ 
+ubuntu@ip-172-30-0-57:~$
+</code>

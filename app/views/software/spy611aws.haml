@@ -116,3 +116,14 @@
     %pre
       =render 'spy611aws15'
 
+
+  %li I should create ssh-keys so I can deploy my site to heroku:
+  %li
+    When it asks me for a passphrase I should just press enter-key:
+    %pre
+      %code.bash ssh-keygen -t rsa
+
+  %li
+    I should see something like this:
+    %pre
+      =render 'spy611aws16'
