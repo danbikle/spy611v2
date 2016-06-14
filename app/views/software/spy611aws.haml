@@ -127,3 +127,15 @@
     I should see something like this:
     %pre
       =render 'spy611aws16'
+
+  %li I should use a laptop-browser to create an account at heroku.com
+
+  %li I should prepare for heroku deployment:
+    %ul
+      %li cd ~/spy611v2
+      %li heroku auth:login
+      %li heroku create spy20160613
+      %li note: spy20160613 is unique
+      %li So, you should pick a different name
+      %li heroku keys:add
+      %li git push heroku master
