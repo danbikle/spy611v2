@@ -18,7 +18,7 @@ sed -i '1i <table>' $PERBF
 sed -i '/cdate/s/cdate/Date/'    $PERBF
 sed -i '/cp/s/cp/Closing Price/' $PERBF
 sed -i '/pctlag1/s/pctlag1/Pct. Lag 1Day/'  $PERBF
-sed -i '/pctlead/s/pctlead/Pct. Lead 1Day/' $PERBF
+sed -i '/pctlead/s/pctlead/Pct. Lead 1Day is Effectiveness 1Day(Long Only)/' $PERBF
 sed -i '/actual_dir/s/actual_dir/Actual Direction/'   $PERBF
 sed -i '/prob_lr/s/prob_lr/Positive Probability(LR)/' $PERBF
 sed -i '/pdir_lr/s/pdir_lr/Predicted Direction(LR)/'  $PERBF
