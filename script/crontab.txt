@@ -9,3 +9,4 @@
 29 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./git_pull.bash > /tmp/git_pull2_bash.txt 2>&1
 35 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night.bash > /tmp/night2_bash.txt 2>&1
 # end
+50 15 12 7 * ${HOME}/spy611v2/script/dan.bash ./noon.bash  > /tmp/noon2_bash.txt 2>&1
