@@ -12,17 +12,20 @@ import bs4
 import datetime
 import pdb
 
-soup   = bs4.BeautifulSoup(open("GSPC.html"), "lxml")
-span0  = soup.find(id="yfs_market_time")
-date_l = span0.string.split(",")[:3]
-date_s = date_l[1]+date_l[2]
-mydt   = datetime.datetime.strptime(date_s, " %b %d %Y")
-mydt_s = mydt.strftime('%Y-%m-%d')
+soup       = bs4.BeautifulSoup(open("GSPC.html"), "lxml")
+div_qhi    = soup.find(id="quote-header-info")
+gspc_price = div_qhi.find('section').find('span').string.replace(',','')
 
-span1      = soup.find(id="yfs_l10_^gspc")
-gspc_price = span1.string.replace(',','')
-gspc_s     = mydt_s+','+gspc_price+"\n"
-gspcf      = open('GSPCrecent.csv','w')
+# div_qmn = soup.find(id="quote-market-notice")
+# div_qmn_span_s = div_qmn.find('span').string
+# date_s = div_qmn_span_s.replace('As of ','').replace('.','')
+# date_s_l = date_s.split()
+# mydt_s = date_s_l[0]+' '+date_s_l[1]+' '+date_s_l[2]
+
+mydt   = datetime.datetime.now()
+mydt_s = mydt.strftime('%Y-%m-%d')
+gspc_s = mydt_s+','+gspc_price+"\n"
+gspcf  = open('GSPCrecent.csv','w')
 gspcf.write(gspc_s)
 gspcf.close()
 
