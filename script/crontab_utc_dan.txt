@@ -1,0 +1,8 @@
+# ~/spy611v2/script/crontab_utc_dan.txt
+# This file should control when I get prices and git_pull.
+# This host is on UTC Time.
+50 19 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon_dan.bash  > /tmp/noon1_bash.txt 2>&1
+13 20 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./noon_dan.bash  > /tmp/noon2_bash.txt 2>&1
+50 23 * * mon,tue,wed,thu,fri ${HOME}/spy611v2/script/dan.bash ./night_dan.ash > /tmp/night2_bash.txt 2>&1
+# end
+
