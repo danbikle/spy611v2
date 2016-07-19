@@ -21,5 +21,5 @@ ${HOME}/anaconda3/bin/python ${HOME}/spy611v2/script/extprice.py
 echo 'cdate,cp'                                > ${TKR}3.csv
 cat ${TKR}recent.csv ${TKR}2.csv|grep -v date >> ${TKR}3.csv
 mv  ${TKR}3.csv                                  ${TKR}2.csv 
-mv  ${TKR}.html /tmp/
+mv  ${TKR}.html /tmp/spy611_${TKR}.html
 exit
