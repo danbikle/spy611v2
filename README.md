@@ -20,23 +20,6 @@ libgdbm-dev libsqlite3-dev gitk postgresql postgresql-server-dev-all  \
 libpq-dev emacs wget curl chromium-browser openssh-server aptitude    \
 ruby ruby-dev sqlite3
 ```
-* I use Anaconda which provide open sources libraries for data science analysis:
-  1. Download Anaconda from Continuum.io 
-  2. Install in bash shell. 
-  3. Test to check path and versions:
-
-```bash
-  cd Downloads
-  wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
-  bash Anaconda3-4.0.0-Linux-x86_64.sh
-  bash
-  which python
- 
-    /home/don/anaconda3/bin/python
-  python -V
-  Python 3.5.1 :: Anaconda 4.0.0 (64-bit)
-```
-
 
 * Next, I created an account named r5 for my Rails 5 efforts:
 
@@ -257,6 +240,21 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 r5@nia111:~/spy611v2 $ 
 r5@nia111:~/spy611v2 $ 
 r5@nia111:~/spy611v2 $ 
+```
+
+* Next, I installed Anaconda Python:
+
+```bash
+cd ~
+curl http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh > Anaconda3-4.0.0-Linux-x86_64.sh
+bash Anaconda3-4.0.0-Linux-x86_64.sh
+cd ~/anaconda3/bin
+mv curl curl_ana
+cd ~
+echo 'export PATH=${HOME}/anaconda3/bin:$PATH' >> ~/.bashrc
+bash
+python
+quit()
 ```
 
 * If you have questions, e-me (Dan Bikle): bikle101@gmail.com
