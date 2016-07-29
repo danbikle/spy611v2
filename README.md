@@ -257,4 +257,19 @@ python
 quit()
 ```
 
+* I offer two ways to run the machine learning software.
+* During the day, 10 minutes before market close, I run this script:
+
+```bash
+${HOME}/spy611v2/script/noon.bash
+```
+
+* At night after closing prices are available I run this script:
+
+```bash
+${HOME}/spy611v2/script/night.bash
+```
+
 * If you have questions, e-me (Dan Bikle): bikle101@gmail.com
+
+* For a modest cost, Dan can setup and operate Machine Learning applications for you.
