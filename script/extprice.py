@@ -14,7 +14,9 @@ import pdb
 
 soup       = bs4.BeautifulSoup(open("GSPC.html"), "lxml")
 div_qhi    = soup.find(id="quote-header-info")
-gspc_price = div_qhi.find('section').find('span').string.replace(',','')
+# gspc_price = div_qhi.find('section').find('span').string.replace(',','')
+# Bug fix 2016-12-01:
+gspc_price = div_qhi.findAll('span')[4].string.replace(',','')
 
 # div_qmn = soup.find(id="quote-market-notice")
 # div_qmn_span_s = div_qmn.find('span').string
