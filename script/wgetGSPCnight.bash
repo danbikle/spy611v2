@@ -3,13 +3,13 @@
 # wgetGSPCnight.bash
 
 # Demo:
-# ${HOME}/spy611v2/script/wgetGSPCnight.bash
+# ${HOME}/spy611/script/wgetGSPCnight.bash
 
 # This script should be called by night.bash
 # This script should get prices at night.
 
-mkdir -p ${HOME}/spy611v2/public/csv/
-cd       ${HOME}/spy611v2/public/csv/
+mkdir -p ${HOME}/spy611/public/csv/
+cd       ${HOME}/spy611/public/csv/
 
 TKRH='%5EGSPC'
 TKR='GSPC'

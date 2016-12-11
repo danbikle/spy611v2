@@ -9,7 +9,7 @@
 # ${SPY611}/script/night.bash
 
 # Demo:
-# export SPY611=${HOME}/spy611v2
+# export SPY611=${HOME}/spy611
 # ${SPY611}/script/sed_pred.bash
 
 PERBF=${SPY611}/public/_predictions.erb

@@ -1,4 +1,4 @@
-# ~/spy611v2/script/extprice.py
+# ~/spy611/script/extprice.py
 
 # This script should extract recent date and prices from html
 
@@ -6,7 +6,7 @@
 # TKRH='%5EGSPC'
 # TKR='GSPC'
 # wget --output-document=${TKR}.html http://finance.yahoo.com/q?s=$TKRH
-# ${HOME}/anaconda3/bin/python ${HOME}/spy611v2/script/extprice.py
+# ${HOME}/anaconda3/bin/python ${HOME}/spy611/script/extprice.py
 
 import bs4
 import datetime

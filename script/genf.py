@@ -1,10 +1,10 @@
-# ~/spy611v2/script/genf.py
+# ~/spy611/script/genf.py
 
 # This script should generate features from prices
 
 # Demo:
-# cd     ~/spy611v2/public/csv/
-# python ~/spy611v2/script/genf.py GSPC2.csv
+# cd     ~/spy611/public/csv/
+# python ~/spy611/script/genf.py GSPC2.csv
 
 import pandas as pd
 import numpy  as np
@@ -15,8 +15,8 @@ import sys
 
 if len(sys.argv) == 1:
   print('Demo:')
-  print('cd     ~/spy611v2/public/csv/')
-  print('python ~/spy611v2/script/genf.py GSPC2.csv')
+  print('cd     ~/spy611/public/csv/')
+  print('python ~/spy611/script/genf.py GSPC2.csv')
   print('...')
   sys.exit()
 

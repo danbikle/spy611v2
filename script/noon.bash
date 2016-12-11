@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ~/spy611v2/script/noon.bash
+# ~/spy611/script/noon.bash
 
 # I should run this at 12:50 Calif time.
 
 # Demo:
-# ${HOME}/spy611v2/script/dan.bash ./noon.bash
+# ${HOME}/spy611/script/dan.bash ./noon.bash
 
-export     SPY611=${HOME}/spy611v2
+export     SPY611=${HOME}/spy611
 mkdir -p ${SPY611}/public/csv/
 cd       ${SPY611}/public/csv/
 

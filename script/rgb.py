@@ -1,7 +1,7 @@
-# ~/spy611v2/script/rgb.py
+# ~/spy611/script/rgb.py
 
 # This script should help me build the red, green,blue visualizations.
-# This script is called by ~/spy611v2/script/night.bash
+# This script is called by ~/spy611/script/night.bash
 
 import numpy  as np
 import pandas as pd
@@ -14,7 +14,7 @@ import sys
 if (len(sys.argv) < 3):
   print('Demo:')
   print('cd /tmp/ddata')
-  print('python ${HOME}/spy611v2/script/rgb.py 2010 2016')
+  print('python ${HOME}/spy611/script/rgb.py 2010 2016')
   print('...')
   sys.exit()
 

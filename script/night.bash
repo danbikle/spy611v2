@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ~/spy611v2/script/night.bash
+# ~/spy611/script/night.bash
 
 # I should run this at night after daily closing price has been published.
 
 # Demo:
-# ${HOME}/spy611v2/script/dan.bash ./night.bash
+# ${HOME}/spy611/script/dan.bash ./night.bash
 
-export     SPY611=${HOME}/spy611v2
+export     SPY611=${HOME}/spy611
 mkdir -p ${SPY611}/public/csv/
 cd       ${SPY611}/public/csv/
 

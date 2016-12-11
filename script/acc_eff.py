@@ -11,7 +11,7 @@ import sys
 if (len(sys.argv) < 3):
   print('Demo:')
   print('cd /tmp/ddata')
-  print('python ${HOME}/spy611v2/script/acc_eff.py 2013 2016')
+  print('python ${HOME}/spy611/script/acc_eff.py 2013 2016')
   print('...')
   sys.exit()
 
