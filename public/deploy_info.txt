@@ -1,0 +1,18 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "gh"]
+	url = git@github.com:danbikle/spy611v2
+	fetch = +refs/heads/*:refs/remotes/gh/*
+[branch "master"]
+	remote = gh
+	merge = refs/heads/master
+[remote "bit"]
+	fetch = +refs/heads/*:refs/remotes/bit/*
+	url = git@bitbucket.org:bikle/spy611v2.git
+[remote "heroku"]
+	url = https://git.heroku.com/spy611.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
+dan.bikle@gmail.com
