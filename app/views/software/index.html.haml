@@ -30,10 +30,11 @@
       https://www.virtualbox.org/wiki/Downloads
   %li After you install VirtualBox on your laptop, I have a OVA file you can use:
   %li
-    %a(href='https://s3-us-west-2.amazonaws.com/bikleiq/ubsmall2016_0409.ova' target='x')
-      https://s3-us-west-2.amazonaws.com/bikleiq/ubsmall2016_0409.ova
+    %a(href='https://drive.google.com/open?id=0Bx3iDDAtxxI4WWFpemh2ZjViVkk' target='x')
+      ub16jan.ova
   %li The way to use the above file is to download it and then click on it.
-  %li VirtualBox should wakeup and 'import' ubsmall2016_0409.ova
+  %li VirtualBox should wakeup and offer an 'import' UI.
+  %li You should import it.
   %li Then inside the VirtualBox GUI you should click on the corresponding Virtual-host.
   %li Then, you should see a login screen for 'ann'; the password is 'a'
   %li VirtualBox can be finicky about networking so you might need to tinker with that in the settings.
@@ -149,10 +150,11 @@
 %pre.round_corner15px
   %code.software
     cd ~
-    wget https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client.tgz
-    tar zxf heroku-client.tgz
-    echo 'export PATH="${HOME}/heroku-client/bin:$PATH"' >> ~/.bashrc
+    wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+    tar zxf heroku-linux-amd64.tar.gz
+    echo 'export PATH=${HOME}/heroku/bin:$PATH' >> ~/.bashrc
     bash
+    heroku auth:login
 
 %ul
   %li I created an ssh-key for the r5 account:
