@@ -38,8 +38,10 @@ for yr in range(startyr,1+finalyr):
   rpt_s = 'For '+str(yr)+':'+'\n'
   rpt_s += 'Naive-Bayes: Positive, Up,   Prediction Count is '+str(tp_i+fp_i)+'\n'
   rpt_s += 'Naive-Bayes: Negative, Down, Prediciton Count is '+str(tn_i+fn_i)+'\n'
-  rpt_s += 'Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%\n'
-  rpt_s += 'Naive-Bayes: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%\n'
+  #pdb.set_trace()
+  # bug below: divide by 0 for 2017 because nb has no pos-predictions (yet).
+  #rpt_s += 'Naive-Bayes: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%\n'
+  #rpt_s += 'Naive-Bayes: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%\n'
   rpt_s += 'Naive-Bayes: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%\n'
   # I should compute effectiveness
   pred_up_pred   = (pred_df['pdir_nb'] ==  1)
