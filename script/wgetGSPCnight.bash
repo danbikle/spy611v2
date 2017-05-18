@@ -14,7 +14,6 @@ cd       ${HOME}/spy611/public/csv/
 TKR='GSPC'
 rm -f ${TKR}2.csv
 
-wget --output-document=${TKR}2.csv http://tkrapi2.herokuapp.com/static/tkrs/gspc.csv
-#ichart.finance.yahoo.com/table.csv?s=${TKRH}
+curl http://tkrapi2.herokuapp.com/static/tkrs/gspc.csv|sort -r > ${TKR}2.csv
 
 exit
