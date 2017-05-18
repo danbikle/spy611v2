@@ -31,7 +31,6 @@ cp ${SPY611}/public/csv/ftrGSPC2.csv /tmp/ddata/
 STARTYR=1981
 ENDYR=2017
 ${HOME}/anaconda3/bin/python ${SPY611}/script/gentrain_test.py ftrGSPC2.csv 30 $STARTYR $ENDYR
-exit
 
 # I should learn then test
 ${HOME}/anaconda3/bin/python ${SPY611}/script/train_test.py $STARTYR $ENDYR
