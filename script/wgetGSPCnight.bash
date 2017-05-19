@@ -14,6 +14,6 @@ cd       ${HOME}/spy611/public/csv/
 TKR='GSPC'
 rm -f ${TKR}2.csv
 
-curl http://tkrapi2.herokuapp.com/static/tkrs/gspc.csv|sort -r > ${TKR}2.csv
+curl 'http://tkrapi2.herokuapp.com/static/tkrs/^GSPC.csv'|sort -r > ${TKR}2.csv
 
 exit
