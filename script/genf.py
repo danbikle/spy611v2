@@ -27,10 +27,9 @@ print('Busy...')
 
 df1  = pd.read_csv(infile)
 df1.columns = ['cdate','cp']
-
-cp_a = df1[['cp']].values
-# cp should be a list sorted by date-ascending:
-cp   = [elm[0] for elm in reversed(cp_a)]
+# I should sort by cdate
+df2 = df1.copy().sort_values(['cdate'])
+cp  = df2.cp.tolist()
 
 cplead_l  = cp + [cp[-1]]
 cplag1_l  = [cp[0]] + cp
@@ -68,25 +67,24 @@ pctlag16_a = 100.0 * (cp_a - cplag16_a)/cplag16_a
 
 # I am done doing calculations.
 # I should put my columns into a DataFrame.
-# I should order by cdate ascending not descending because descending is ... wrong.
-cdate_l = list(reversed(df1['cdate'].values))
-df2         = pd.DataFrame(cdate_l)
-df2.columns = ['cdate']
-df2['cp']   = cp
+cdate_sr    = df2.cdate
+df3         = pd.DataFrame(cdate_sr)
+df3.columns = ['cdate']
+df3['cp']   = cp
 
-df2['pctlead']  = pctlead_a
-df2['pctlag1']  = pctlag1_a
-df2['pctlag2']  = pctlag2_a
-df2['pctlag4']  = pctlag4_a
-df2['pctlag8']  = pctlag8_a
-df2['pctlag16'] = pctlag16_a
+df3['pctlead']  = pctlead_a
+df3['pctlag1']  = pctlag1_a
+df3['pctlag2']  = pctlag2_a
+df3['pctlag4']  = pctlag4_a
+df3['pctlag8']  = pctlag8_a
+df3['pctlag16'] = pctlag16_a
 
 # I should save my work into a CSV file.
 # My input file should look something like this:
 # GSPC2.csv
 # I should save my work as something like this:
 # ftrGSPC2.csv
-df2.to_csv('ftr'+infile, float_format='%4.3f', index=False)
+df3.to_csv('ftr'+infile, float_format='%4.3f', index=False)
 print('Done...')
 
 # done
