@@ -22,4 +22,7 @@ echo 'cdate,cp'                                 > ${TKR}3.csv
 cat ${TKR}2.csv ${TKR}recent.csv|grep -iv date >> ${TKR}3.csv
 mv  ${TKR}3.csv                                   ${TKR}2.csv 
 mv  ${TKR}.html /tmp/spy611_${TKR}.html
+
+${HOME}/anaconda3/bin/python ${HOME}/spy611/script/dedupGSPC2csv.py
+cp /tmp/gb.csv ${TKR}2.csv 
 exit
