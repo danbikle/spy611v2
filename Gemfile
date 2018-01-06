@@ -1,6 +1,7 @@
 ruby '2.3.1'
 source 'https://rubygems.org'
 
+gem 'nokogiri'
 gem 'rails_12factor'
 gem 'haml'          
 gem 'haml-rails'    
