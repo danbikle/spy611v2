@@ -1,10 +1,10 @@
 ruby '2.3.1'
 source 'https://rubygems.org'
 
-gem 'nokogiri'
+gem 'nokogiri','1.8.1'
 gem 'rails_12factor'
-gem 'haml'          
-gem 'haml-rails'    
+gem 'haml'      ,'5.0.4'
+gem 'haml-rails','1.0.0'
 
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 
