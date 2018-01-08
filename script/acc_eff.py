@@ -70,8 +70,17 @@ for yr in range(startyr,1+finalyr):
   rpt_s += 'For '+str(yr)+':\n'
   rpt_s += 'Logistic-Regression: Positive, Up,   Prediction Count is '+str(tp_i+fp_i)+'\n'
   rpt_s += 'Logistic-Regression: Negative, Down, Prediciton Count is '+str(tn_i+fn_i)+'\n'
-  rpt_s += 'Logistic-Regression: Positive Accuracy is '+str(np.round(100*tp_i / (tp_i+fp_i)))+'%\n'
-  rpt_s += 'Logistic-Regression: Negative Accuracy is '+str(np.round(100*tn_i / (tn_i+fn_i)))+'%\n'
+  # I should avoid div-by-0:
+  if (tp_i+fp_i) == 0:
+    pos_acc = '0.0'
+  else:
+    pos_acc = str(np.round(100*tp_i / (tp_i+fp_i)))
+  if (tn_i+fn_i) == 0:
+    neg_acc = '0.0'
+  else:
+    neg_acc = str(np.round(100*tp_i / (tn_i+fn_i)))
+  rpt_s += 'Logistic-Regression: Positive Accuracy is '+pos_acc+'%\n'
+  rpt_s += 'Logistic-Regression: Negative Accuracy is '+neg_acc+'%\n'
   rpt_s += 'Logistic-Regression: Total Accuracy is '+str(np.round(100*(tp_i+tn_i)/(tp_i+fp_i+tn_i+fn_i)))+'%\n'
   # I should compute effectiveness
   pred_up_pred   = (pred_df['pdir_lr'] ==  1)
